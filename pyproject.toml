@@ -3,7 +3,7 @@
 name = "gpai-docs"
 # Owned by python-semantic-release, which derives it from the commit
 # history. Do not edit it by hand.
-version = "0.9.0"
+version = "0.1.0"
 description = "Check EU AI Act GPAI model documentation (Art. 53, Annexes XI-XII) for completeness and consistency, with every rule traced to the legal text. Not a compliance certificate."
 readme = "README.md"
 license = "MIT"
