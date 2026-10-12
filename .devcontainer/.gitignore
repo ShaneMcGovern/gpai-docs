@@ -1,0 +1,9 @@
+# Whitelist: everything is ignored unless named here, so per-developer state,
+# secrets and editor scratch cannot be committed by accident.
+*
+!.gitignore
+!.env.example
+!Dockerfile
+!compose.yaml
+!devcontainer.json
+!entrypoint.sh

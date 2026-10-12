@@ -1,0 +1,144 @@
+---
+name: Release
+
+on:
+  # main only; the gate below re-checks that the merge came from a validated PR.
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  release:
+    name: Semantic release
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+      # `gh pr checks` walks statusCheckRollup, which needs checks:read, and
+      # checkSuite.workflowRun one level deeper, which needs actions:read;
+      # without them the gate dies with "Resource not accessible by integration".
+      checks: read
+      actions: read
+
+    # The badge job below shares this group; both push to main.
+    concurrency:
+      group: main-writes
+      cancel-in-progress: false
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7.0.1
+        with:
+          # python-semantic-release (PSR) reads the whole history and every
+          # tag to work out the next version. A shallow clone breaks it.
+          fetch-depth: 0
+
+      # A tripwire, not a guarantee: PSR versions every commit since the last
+      # tag, so an unvalidated commit would be swept into the next release.
+      # Required status checks on main would replace this step; until they are
+      # configured, this is what holds the gate.
+      - name: Verify the merged PR passed Validate
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          pr=$(gh api "repos/$GITHUB_REPOSITORY/commits/$GITHUB_SHA/pulls" --jq '.[0].number')
+          if [ -z "$pr" ] || [ "$pr" = "null" ]; then
+            echo "::error::No pull request is associated with $GITHUB_SHA; refusing to release."
+            exit 1
+          fi
+          # Non-zero for failed, pending, or missing checks; the safe direction
+          # is the default.
+          if ! gh pr checks "$pr"; then
+            echo "::error::PR #$pr did not pass Validate; refusing to release."
+            exit 1
+          fi
+
+      # The badge job shares this run and may push its commit first; the
+      # checkout is pinned to the commit that triggered the run, and PSR
+      # refuses to release when origin/main has moved past it. The gate above
+      # already checked that trigger commit's pull request.
+      - name: Fast-forward to the branch tip
+        run: |
+          git fetch origin main
+          git reset --hard origin/main
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v10.2.0
+        with:
+          enable-cache: true
+          cache-dependency-glob: "uv.lock"
+
+      - name: Configure git identity for the release commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      # uvx is used instead of PSR's Docker action, whose image is built with
+      # `pip install --pre` and so resolves pre-release dependencies that
+      # cannot be pinned. Not a dev dependency either: only this job runs it.
+      # Dependabot cannot see this pin, so bump it by hand; configuration is in
+      # pyproject.toml.
+      - name: Python Semantic Release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: uvx --from python-semantic-release==10.6.2 semantic-release -v version
+
+  # Runs on main because validate.yml is PR-only, and as a separate job so a
+  # badge failure cannot block a release. It re-runs the suite rather than
+  # reusing an artifact, so it holds contents: write while executing the
+  # project's own tests; everything on main passed review and the release gate
+  # above. Both jobs share `main-writes` so their pushes to main serialize.
+  badge:
+    name: Update coverage badge
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    permissions:
+      contents: write
+
+    concurrency:
+      group: main-writes
+      cancel-in-progress: false
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7.0.1
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v10.2.0
+        with:
+          enable-cache: true
+          cache-dependency-glob: "uv.lock"
+
+      - name: Install dependencies
+        run: uv sync --frozen --all-groups
+
+      - name: Run tests
+        run: uv run pytest -v
+
+      # genbadge writes no trailing newline, and this job commits directly with
+      # no hooks installed, so without the printf end-of-file-fixer fails for
+      # everyone else.
+      - name: Regenerate the coverage badge
+        run: |
+          uv run genbadge coverage -i coverage.xml -o badges/coverage.svg
+          printf '\n' >> badges/coverage.svg
+
+      - name: Commit the badge if it changed
+        run: |
+          if git diff --quiet -- badges/coverage.svg; then
+            echo "Coverage badge unchanged; nothing to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add badges/coverage.svg
+          git commit -m "chore: update coverage badge [skip ci]"
+          git pull --rebase origin main
+          git push origin HEAD:main

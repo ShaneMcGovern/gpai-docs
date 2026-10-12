@@ -1,0 +1,61 @@
+---
+# Explicit, so this repo's named volumes cannot collide with another
+# checkout's: compose would otherwise name the project after the directory
+# the checkout sits in.
+name: gpai-docs
+
+services:
+  app:
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+      # For Linux hosts whose account is not 1000, set these in .env: the bind
+      # mount passes ownership through and /app is otherwise unwritable.
+      args:
+        USER_UID: ${USER_UID:-1000}
+        USER_GID: ${USER_GID:-1000}
+
+    volumes:
+      - ..:/app
+
+      # The venv goes in a named volume; on the bind mount, host permissions
+      # would break container-built binaries.
+      - venv:/app/.venv
+
+      - uv-cache:/home/developer/.cache/uv
+      - precommit-cache:/home/developer/.cache/pre-commit
+
+      # Keeps `gh auth login` across rebuilds.
+      - gh-config:/home/developer/.config/gh
+
+    working_dir: /app
+
+    init: true
+
+    # List form: a map's `${VAR:-}` would inject an empty value, and an empty
+    # GIT_AUTHOR_NAME/EMAIL aborts every commit with "fatal: empty ident name".
+    environment:
+      - GIT_AUTHOR_NAME
+      - GIT_AUTHOR_EMAIL
+      - GH_CONFIG_DIR=/home/developer/.config/gh
+      - UV_CACHE_DIR=/home/developer/.cache/uv
+      - PRE_COMMIT_HOME=/home/developer/.cache/pre-commit
+      # Token auth for `gh`, read from .env: no interactive login needed. The
+      # mounted gh config above still keeps an interactive login as a fallback.
+      - GH_TOKEN
+
+    healthcheck:
+      # Test the interpreter binary; the Dockerfile pre-creates /app/.venv, so a
+      # directory test could never fail.
+      test: ["CMD", "test", "-x", "/app/.venv/bin/python"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      # A cold sync after `down -v` can exceed two minutes.
+      start_period: 180s
+
+volumes:
+  venv:
+  uv-cache:
+  precommit-cache:
+  gh-config:

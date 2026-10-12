@@ -1,0 +1,49 @@
+---
+# The composite action: set up Python, install a released gpai-docs, run the
+# linter, and let lint's exit code decide the step (1 = findings). No Docker
+# image and no JavaScript to build. The install step needs the package on
+# PyPI; publication is the maintainer's pending decision, so this action is
+# the ready artifact and the README's "Use it in CI" section states the gate.
+name: gpai-docs lint
+description: >-
+  Lint a native GPAI model documentation document against the traced registry.
+  The step's outcome is the linter's: exit 1 means findings, exit 2 bad input.
+inputs:
+  document:
+    description: Path to the native YAML or JSON document to check.
+    required: true
+  args:
+    description: Extra lint flags to pass through, for example --markdown.
+    required: false
+    default: ""
+  version:
+    description: The gpai-docs release to install; "latest" installs unpinned.
+    required: false
+    default: "latest"
+  python:
+    description: The Python version to run the linter with.
+    required: false
+    default: "3.13"
+runs:
+  using: composite
+  steps:
+    - name: Set up Python
+      uses: actions/setup-python@v7.0.0
+      with:
+        python-version: ${{ inputs.python }}
+    - name: Install gpai-docs
+      shell: bash
+      env:
+        VERSION: ${{ inputs.version }}
+      run: |
+        if [ -z "$VERSION" ] || [ "$VERSION" = "latest" ]; then
+          python -m pip install gpai-docs
+        else
+          python -m pip install "gpai-docs==$VERSION"
+        fi
+    - name: Lint the document
+      shell: bash
+      env:
+        DOCUMENT: ${{ inputs.document }}
+        ARGS: ${{ inputs.args }}
+      run: gpai-docs lint "$DOCUMENT" $ARGS

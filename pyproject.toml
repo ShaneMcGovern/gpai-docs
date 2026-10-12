@@ -1,0 +1,132 @@
+[project]
+# The import package is gpai_docs.
+name = "gpai-docs"
+# Owned by python-semantic-release, which derives it from the commit
+# history. Do not edit it by hand.
+version = "0.9.0"
+description = "Check EU AI Act GPAI model documentation (Art. 53, Annexes XI-XII) for completeness and consistency, with every rule traced to the legal text. Not a compliance certificate."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Shane McGovern", email = "ShaneMcGovern@users.noreply.github.com" }]
+# Widen this floor by hand if the project should support older interpreters
+# than the one in .python-version.
+requires-python = ">=3.13"
+dependencies = [
+    "pydantic>=2.14.0",
+    "pyyaml>=6.0.3",
+    "typer>=0.27.3",
+]
+
+[project.urls]
+Repository = "https://github.com/ShaneMcGovern/gpai-docs"
+
+# The console script the README documents (`gpai-docs lint ...`).
+[project.scripts]
+gpai-docs = "gpai_docs.cli:main"
+
+# uv_build is uv's own backend, and its default layout is exactly src/ plus a
+# module named after the project. Installing the project is what makes
+# `python -m gpai_docs` and `uv run gpai-docs` work without any PYTHONPATH:
+# `uv sync` installs it editable. Publication runs through the Publish
+# workflow; nothing in this file builds a distribution.
+[build-system]
+requires = ["uv_build>=0.12.7,<0.13"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "genbadge[coverage]>=1.1.3",
+    "mypy>=2.3.1",
+    "pre-commit>=4.6.2",
+    "ruff>=0.16.4",
+    "pytest>=9.1.1",
+    "pytest-cov>=7.1.0",
+    "types-pyyaml>=6.0.12.20260906",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+# No pythonpath entry: uv sync installs the package, so pytest imports the same
+# installed package a user would. importlib mode drops the default import
+# mode's globally-unique-filename rule. The coverage floor is enforced: mark
+# genuinely unreachable code `# pragma: no cover` rather than lowering it.
+addopts = [
+    "--cov",
+    "--cov-report=xml",
+    "--cov-report=term",
+    "--import-mode=importlib",
+    "--cov-fail-under=95",
+]
+
+[tool.coverage.run]
+# The installed package, not the src/ directory, so coverage cannot count a
+# module that the distribution does not actually ship.
+source = ["gpai_docs"]
+branch = true
+
+[tool.ruff]
+line-length = 88
+# target-version stays unset so ruff infers it from requires-python, which
+# keeps the two from drifting apart.
+
+[tool.ruff.lint]
+# flake8-executable (EXE) is left out. Its rules key off the filesystem
+# executable bit, and a Windows/WSL2 bind mount reports 0755 where git tracks
+# 0644, so EXE002 fails in the container and passes in CI, on files that are
+# not scripts at all.
+select = [
+    "E",
+    "W",
+    "F",
+    "I",
+    "B",
+    "C4",
+    "UP",
+    "N",
+    "SIM",
+    "PTH",
+    "ARG",
+    "TID",
+    "RUF",
+]
+
+[tool.ruff.lint.per-file-ignores]
+# Tests often accept fixtures they never reference directly.
+"tests/*" = ["ARG"]
+
+[tool.ruff.format]
+docstring-code-format = true
+# Ruff also formats Python inside Markdown code fences, but the ruff-format
+# hook only runs on python/pyi files. Without this, a bare `ruff format .`
+# rewrites the README when the hook would not.
+exclude = ["*.md"]
+
+[tool.mypy]
+files = ["src", "tests"]
+strict = true
+warn_unreachable = true
+# python_version stays unset so mypy infers it from the interpreter it runs
+# under, and uv guarantees that matches .python-version.
+
+[tool.semantic_release]
+# No version_variables entry, since an __version__ would be a second copy of
+# the version, with no importlib.metadata to check it against.
+version_toml = ["pyproject.toml:project.version"]
+# This isn't a build. It re-locks so uv.lock records the version
+# python-semantic-release (PSR) just wrote, and `assets` puts the result in the
+# release commit; without that the uv-lock hook fails on the next push.
+build_command = "uv lock"
+assets = ["uv.lock"]
+commit_parser = "conventional"
+# Set this false and PSR's first release jumps to 1.0.0.
+allow_zero_version = true
+commit_message = "chore(release): {version} [skip ci]"
+tag_format = "v{version}"
+
+[tool.semantic_release.branches.main]
+match = "main"
+
+[tool.semantic_release.changelog]
+mode = "update"
+insertion_flag = "<!-- version list -->"

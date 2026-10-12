@@ -1,0 +1,21 @@
+# This context serves both images built from the repository: the dev container
+# (.devcontainer/Dockerfile) and the image the root Dockerfile builds. That
+# Dockerfile's COPY list is the wheel build's whole input set - pyproject.toml,
+# README.md, LICENSE and src/ - and the exclusions below keep the directories
+# and artifacts no build can need out of the context; the remaining tracked
+# files still travel with it. The dev container needs
+# .devcontainer/entrypoint.sh, so nothing under .devcontainer is excluded.
+.git
+.github
+.venv
+# The **/ prefix matches caches beside the code, not only at the repo root.
+**/__pycache__
+**/.mypy_cache
+**/.pytest_cache
+**/.ruff_cache
+**/.env
+dist
+tests
+docs
+# The paper source: no build reads it.
+paper

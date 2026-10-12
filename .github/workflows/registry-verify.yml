@@ -1,0 +1,43 @@
+---
+name: Registry verify
+
+# Weekly drift detection for the registry's sources: `registry verify
+# --online` re-fetches every source, re-downloads the Form and watches the
+# consolidation pin, exiting 1 on any finding: a real change, an extraction
+# failure, or a source that could not be verified. GitHub emails the failure
+# by default; the workflow history is the verification record.
+#
+# The first scheduled run and the first manual dispatch can only happen once
+# this workflow is on the default branch, so the first confirmation of the
+# scheduled path is deferred until this branch merges.
+on:
+  schedule:
+    - cron: "17 6 * * 1" # Mondays, 06:17 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: Registry verify (online)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7.0.1
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v10.2.0
+        with:
+          enable-cache: true
+          cache-dependency-glob: "uv.lock"
+
+      - name: Install dependencies
+        run: uv sync --frozen
+
+      # A non-zero exit is a finding to triage: a text change, an artifact
+      # change, a new consolidation, an extraction failure, or a source that
+      # could not be verified. None of them is a compliance verdict.
+      - name: Verify the registry against the live sources
+        run: uv run gpai-docs registry verify --online

@@ -1,0 +1,73 @@
+# PyPI trusted publishing on a GitHub Release, with a manual TestPyPI dry
+# run. Nothing publishes until the pending trusted publisher on PyPI (and,
+# for the dry run, on test.pypi.org) names this filename, the owner
+# ShaneMcGovern and the repository gpai-docs, and the `pypi` environment
+# exists under the repository's Settings -> Environments.
+#
+# Two jobs on purpose: the build half runs with `contents: read` only, and
+# the publish half is the only place that asks for `id-token: write`, so the
+# publishing credentials' scope never covers the build steps.
+#
+# Action versions, checked 2026-10-11:
+# actions/checkout v7.0.1, astral-sh/setup-uv v10.2.0,
+# actions/upload-artifact v7.0.2, actions/download-artifact v8.0.2,
+# astral-sh/attest-action v0.0.6.
+name: Publish
+
+on:
+  # A GitHub Release is the trigger: the release pipeline tags one and this
+  # workflow turns it into an upload. Nothing here decides a version.
+  release:
+    types: [published]
+  # The first run should be a manual dry run against TestPyPI, which needs
+  # its own trusted publisher registered on test.pypi.org with the same
+  # owner, repository, workflow filename and environment fields.
+  workflow_dispatch:
+    inputs:
+      target:
+        description: Where to publish
+        type: choice
+        options: [testpypi, pypi]
+        default: testpypi
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@v10.2.0
+        with:
+          enable-cache: false
+      - name: Build the distributions
+        run: uv build
+      - uses: actions/upload-artifact@v7.0.2
+        with:
+          name: dist
+          path: dist/
+
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+    environment: pypi
+    permissions:
+      id-token: write
+    steps:
+      - uses: astral-sh/setup-uv@v10.2.0
+        with:
+          enable-cache: false
+      - uses: actions/download-artifact@v8.0.2
+        with:
+          name: dist
+          path: dist/
+      - name: Generate PEP 740 attestations
+        uses: astral-sh/attest-action@v0.0.6
+      - name: Publish to TestPyPI
+        if: github.event_name == 'workflow_dispatch' && inputs.target == 'testpypi'
+        run: uv publish --publish-url https://test.pypi.org/legacy/
+      - name: Publish to PyPI
+        if: github.event_name == 'release' || inputs.target == 'pypi'
+        run: uv publish

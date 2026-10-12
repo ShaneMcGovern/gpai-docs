@@ -1,0 +1,74 @@
+---
+version: 2
+
+# Dependabot's default "Bump x from 1 to 2" is not a Conventional Commit, which
+# the commit-msg hook requires and an automated release pipeline silently
+# ignores; "chore" also keeps a bump from cutting a release. The block is
+# repeated per ecosystem instead of shared through a YAML anchor, because an
+# anchor needs a top-level key and Dependabot's schema validation rejects
+# unknown ones.
+
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: "chore"
+      include: "scope"
+
+  - package-ecosystem: "docker"
+    directory: "/.devcontainer"
+    schedule:
+      interval: weekly
+    # Image tags are toolchain choices, not ordinary dependencies: moving a
+    # line is a deliberate upgrade, not a bot pull request.
+    ignore:
+      # The image supplies the devcontainer only; .python-version pins the
+      # project's interpreter, and pyproject.toml its support floor. A bump
+      # that leaves the pin behind splits the two, so it is a project
+      # decision.
+      - dependency-name: "python"
+        update-types:
+          - "version-update:semver-major"
+          - "version-update:semver-minor"
+
+      # Pre-1.0: a 0.13 minor can break, so only 0.12.x patches flow.
+      - dependency-name: "astral-sh/uv"
+        update-types:
+          - "version-update:semver-major"
+          - "version-update:semver-minor"
+    commit-message:
+      prefix: "chore"
+      include: "scope"
+
+  # A docker entry watches one directory, so the root Dockerfile needs its own
+  # entry: same policy, but the only image it holds is python.
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
+      interval: weekly
+    # As above: the image supplies the runtime, .python-version pins the
+    # interpreter, and pyproject.toml its support floor. A bump that leaves the
+    # pin behind splits the two, so it is a project decision.
+    ignore:
+      - dependency-name: "python"
+        update-types:
+          - "version-update:semver-major"
+          - "version-update:semver-minor"
+    commit-message:
+      prefix: "chore"
+      include: "scope"
+
+  - package-ecosystem: "uv"
+    directory: "/"
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: "chore"
+      include: "scope"
+    groups:
+      python-patch-versions:
+        applies-to: version-updates
+        update-types:
+          - "patch"
