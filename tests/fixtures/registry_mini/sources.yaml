@@ -1,0 +1,32 @@
+schema: 1
+pack: eu-ai-act
+sources:
+  - id: xi-1-1-a
+    kind: regulation
+    instrument: Regulation (EU) 2024/1689
+    celex: 02024R1689-20260727
+    location: Annex XI, Section 1, point 1(a)
+    language: en
+    url: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02024R1689-20260727
+    extraction:
+      kind: element
+      annex: XI
+      section: 1
+      item: 1
+      letter: a
+    retrieved: 2026-10-08
+    verification: extract
+    text: "the tasks that the model is intended to perform and the type and nature of AI systems in which it can be integrated"
+    sha256: 07bb63373759cf24d241809ce41e2191ef2932cc9ddfc606b79e455b7d2e6b09
+  - id: guidelines-energy-estimate
+    kind: guidelines
+    instrument: Commission GPAI Guidelines C(2025) 7719 final
+    location: paragraph 42
+    language: en
+    url: https://example.invalid/guidelines
+    artifact_url: https://example.invalid/guidelines.pdf
+    artifact_sha256: "0000000000000000000000000000000000000000000000000000000000000000"
+    retrieved: 2026-10-08
+    verification: artifact
+    text: "where the energy consumption of the model is unknown, it may be based on information about the computational resources used"
+    sha256: 8a1266fb38280fc07e40f5d8a9265b68aae4a2f8447d35b77c956471746ed72e

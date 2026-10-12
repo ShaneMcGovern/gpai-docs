@@ -1,0 +1,850 @@
+schema: 1
+pack: eu-ai-act
+# The connected instruments. Mappings here are navigation,
+# never conformance: each says where an instrument keeps the corresponding
+# material, and findings never cite a crosswalk entry. The three serialisation
+# formats are recorded with `status: deferred` (populated in v0.2) and are
+# referenced by no mapping or alias. ISO targets are `provisional`: no
+# authorised copy of any ISO standard was available to verify
+# identifiers against, so ISO rows cite clause and Annex identifiers only and
+# reproduce no ISO text.
+targets:
+  - id: eu-gpai-code
+    name: Code of Practice for General-Purpose AI Models - Transparency chapter
+    version: Transparency chapter, text of 10 July 2025
+    date: 2025-07-10
+    url: https://digital-strategy.ec.europa.eu/en/policies/contents-code-gpai
+    licence: Commission document, CC BY 4.0; reuse with attribution
+    identifier_style: Measure 1.1 / 1.2 / 1.3 (Transparency chapter measure numbers)
+    status: active
+    provisional: false
+  - id: nist-ai-rmf
+    name: NIST AI Risk Management Framework (AI RMF 1.0)
+    version: "1.0"
+    date: 2023-01-26
+    url: https://doi.org/10.6028/NIST.AI.100-1
+    licence: NIST publication, not subject to copyright in the United States;
+      reuse with attribution; the NIST disclaimer applies (identification of
+      commercial entities implies no endorsement)
+    identifier_style: GOVERN 1.1 / MAP 2.2 / MEASURE 2.9 as printed in NIST AI
+      100-1; the Playbook abbreviates the functions
+    status: active
+    provisional: false
+  - id: nist-ai-600-1
+    name: "NIST AI 600-1 - AI RMF Generative AI Profile"
+    version: NIST AI 600-1 (July 2024)
+    date: 2024-07-26
+    url: https://doi.org/10.6028/NIST.AI.600-1
+    licence: NIST publication, not subject to copyright in the United States;
+      reuse with attribution; the NIST disclaimer applies (identification of
+      commercial entities implies no endorsement)
+    identifier_style: Action IDs; function abbreviation, subcategory and
+      action number, e.g. MP-2.1-001, GV-4.2-003
+    status: active
+    provisional: false
+  # ISO publishes month precision on its public catalogue pages; the first of
+  # the publication month is recorded here.
+  - id: iso-42001
+    name: "ISO/IEC 42001:2023 — Information technology — Artificial
+      intelligence — Management system"
+    version: Edition 1 (2023)
+    date: 2023-12-01
+    url: https://www.iso.org/standard/81230.html
+    licence: ISO copyright; identifiers and links only; no text reproduced
+    identifier_style: Clause and Annex A identifiers only, e.g. Clause 7.5,
+      Annex A.8
+    status: active
+    provisional: true
+  - id: iso-23894
+    name: "ISO/IEC 23894:2023 — Information technology — Artificial
+      intelligence — Guidance on risk management"
+    version: Edition 1 (2023)
+    date: 2023-02-01
+    url: https://www.iso.org/standard/77304.html
+    licence: ISO copyright; identifiers and links only; no text reproduced
+    identifier_style: Clause identifiers only, e.g. Clause 6
+    status: active
+    provisional: true
+  - id: iso-42005
+    name: "ISO/IEC 42005:2025 — Information technology — Artificial
+      intelligence (AI) — AI system impact assessment"
+    version: Edition 1 (2025)
+    date: 2025-05-01
+    url: https://www.iso.org/standard/44545.html
+    licence: ISO copyright; identifiers and links only; no text reproduced
+    identifier_style: Clause identifiers only, e.g. Clause 6
+    status: active
+    provisional: true
+  - id: iso-22989
+    name: "ISO/IEC 22989:2022 — Information technology — Artificial
+      intelligence — Artificial intelligence concepts and terminology"
+    version: Edition 1 (2022)
+    date: 2022-07-01
+    url: https://www.iso.org/standard/74296.html
+    licence: ISO copyright; terms and identifiers only; no definitions
+      reproduced
+    identifier_style: Term names and clause numbers only, e.g. 5.19
+    status: active
+    provisional: true
+  - id: oecd-ai-principles
+    name: OECD Recommendation of the Council on Artificial Intelligence
+    version: OECD/LEGAL/0449, as amended on 3 May 2024
+    date: 2019-05-22
+    url: https://legalinstruments.oecd.org/en/instruments/OECD-LEGAL-0449
+    licence: OECD; reproduced and distributed free of charge, unaltered and
+      not for sale
+    identifier_style: Principles and headings as numbered in the Recommendation
+    status: active
+    provisional: false
+  - id: coe-cets-225
+    name: Council of Europe Framework Convention on Artificial Intelligence
+      and Human Rights, Democracy and the Rule of Law
+    version: CETS No. 225, opened for signature 5 September 2024 (not yet in
+      force)
+    date: 2024-09-05
+    url: https://www.coe.int/en/web/conventions/full-list?module=treaty-detail&treatynum=225
+    licence: reuse terms unverified; link only; no text reproduced
+    identifier_style: Article numbers only, e.g. Article 16
+    status: optional
+    provisional: false
+  - id: kr-ai-basic-act
+    name: Framework Act on the Development of Artificial Intelligence and the
+      Creation of a Foundation for Trust (AI Basic Act, Korea)
+    version: Act No. 20676 as amended by Act No. 21311 (in force 22 January
+      2026)
+    date: 2026-01-20
+    url: https://elaw.klri.re.kr/eng_service/lawViewContent.do?hseq=73499
+    licence: KLRI English translation; individual terms quoted only; no
+      reproduction at large
+    identifier_style: Article 2(2) style; article, paragraph, subparagraph
+    status: active
+    provisional: false
+  # Serialisation formats: documented now, populated in v0.2.
+  - id: cyclonedx-modelcard
+    name: CycloneDX ML-BOM (machine learning bill of materials)
+    version: "1.7.2"
+    date: 2026-09-17
+    url: https://cyclonedx.org/capabilities/mlbom/
+    licence: Apache-2.0 (the CycloneDX project); ECMA-424 available free of
+      charge
+    identifier_style: CycloneDX element names, e.g. modelCard, component
+    status: deferred
+    provisional: false
+  - id: spdx-3-ai
+    name: SPDX 3 AI profile (System Package Data Exchange)
+    version: 3.0.1 (3.1 is a release candidate; its AI additions are not
+      depended on)
+    date: 2024-12-17
+    url: https://spdx.github.io/spdx-spec/v3.0.1/
+    licence: Community Specification License 1.0; pre-existing portions under
+      CC BY 3.0
+    identifier_style: SPDX element and relationship names as defined in the AI
+      profile
+    status: deferred
+    provisional: false
+  - id: oscal
+    name: OSCAL (Open Security Controls Assessment Language)
+    version: "1.2.3"
+    date: 2026-08-07
+    url: https://pages.nist.gov/OSCAL/
+    licence: public domain in the United States (US Government work); prepared
+      by NIST
+    identifier_style: OSCAL model and element names, e.g. control mapping model
+    status: deferred
+    provisional: false
+# One entry per field, in registry order. The EU axis is operational: every
+# element's documentation is drawn up under Measure 1.1, provided under
+# Measure 1.2 (to downstream providers where the Form marks it for them, to
+# the AI Office on request otherwise), and controlled and retained under
+# Measure 1.3. NIST rows appear where the verified identifiers genuinely
+# carry the element's material; ISO rows cite the two 42001 anchors and the
+# 42005 impact-assessment record, all provisional.
+mappings:
+  - field: XI.1.1.a
+    targets:
+      - target: eu-gpai-code
+        ref: Measure 1.1
+        note: Measure 1.1's Model Documentation is where the Code keeps the
+          tasks the model is intended to perform.
+      - target: eu-gpai-code
+        ref: Measure 1.2
+        note: The Form marks this item for downstream providers; Measure 1.2
+          provides the current Model Documentation to them.
+      - target: eu-gpai-code
+        ref: Measure 1.3
+        note: Measure 1.3 controls this item's documentation for quality and
+          integrity and retains it as evidence.
+      - target: nist-ai-rmf
+        ref: MAP 1.1
+        note: The Framework documents intended purposes, uses and deployment
+          settings here.
+      - target: nist-ai-rmf
+        ref: MAP 2.1
+        note: The Framework defines the model's specific tasks and methods here.
+      - target: nist-ai-600-1
+        ref: MP-1.1-002
+        note: The Profile keeps the expected and acceptable context of use in
+          this action.
+      - target: iso-42001
+        ref: Clause 7.5
+        note: ISO/IEC 42001 keeps the tasks the model is intended to perform as
+          documented information under this clause.
+      - target: iso-42001
+        ref: Annex A.8
+        note: The Form marks this item for downstream providers; ISO/IEC 42001
+          keeps information for interested parties under Annex A.8.
+  - field: XI.1.1.b
+    targets:
+      - target: eu-gpai-code
+        ref: Measure 1.1
+        note: Measure 1.1's Model Documentation is where the Code keeps the
+          acceptable use policies.
+      - target: eu-gpai-code
+        ref: Measure 1.2
+        note: The Form marks this item for downstream providers; Measure 1.2
+          provides the current Model Documentation to them.
+      - target: eu-gpai-code
+        ref: Measure 1.3
+        note: Measure 1.3 controls this item's documentation for quality and
+          integrity and retains it as evidence.
+      - target: nist-ai-rmf
+        ref: MAP 1.1
+        note: Acceptable-use expectations are part of the context of use this
+          subcategory documents.
+      - target: nist-ai-600-1
+        ref: GV-1.4-002
+        note: The Profile keeps transparent acceptable use policies in this
+          action.
+      - target: iso-42001
+        ref: Clause 7.5
+        note: ISO/IEC 42001 keeps the acceptable use policies as documented
+          information under this clause.
+      - target: iso-42001
+        ref: Annex A.8
+        note: The Form marks this item for downstream providers; ISO/IEC 42001
+          keeps information for interested parties under Annex A.8.
+  - field: XI.1.1.c
+    targets:
+      - target: eu-gpai-code
+        ref: Measure 1.1
+        note: Measure 1.1's Model Documentation is where the Code keeps the
+          release date and the methods of distribution.
+      - target: eu-gpai-code
+        ref: Measure 1.2
+        note: The Form marks this item for downstream providers; Measure 1.2
+          provides the current Model Documentation to them.
+      - target: eu-gpai-code
+        ref: Measure 1.3
+        note: Measure 1.3 controls this item's documentation for quality and
+          integrity and retains it as evidence.
+      - target: iso-42001
+        ref: Clause 7.5
+        note: ISO/IEC 42001 keeps the release date and distribution methods as
+          documented information under this clause.
+      - target: iso-42001
+        ref: Annex A.8
+        note: The Form marks this item for downstream providers; ISO/IEC 42001
+          keeps information for interested parties under Annex A.8.
+  - field: XI.1.1.d
+    targets:
+      - target: eu-gpai-code
+        ref: Measure 1.1
+        note: Measure 1.1's Model Documentation is where the Code keeps the
+          model's architecture and parameter count.
+      - target: eu-gpai-code
+        ref: Measure 1.2
+        note: The Form marks this item for downstream providers; Measure 1.2
+          provides the current Model Documentation to them.
+      - target: eu-gpai-code
+        ref: Measure 1.3
+        note: Measure 1.3 controls this item's documentation for quality and
+          integrity and retains it as evidence.
+      - target: nist-ai-rmf
+        ref: MEASURE 2.9
+        note: The Framework has the model itself explained, validated and
+          documented here.
+      - target: nist-ai-600-1
+        ref: MS-2.9-002
+        note: The Profile keeps the model details, the architecture among
+          them, in this action.
+      - target: iso-42001
+        ref: Clause 7.5
+        note: ISO/IEC 42001 keeps the architecture and parameter count as
+          documented information under this clause.
+      - target: iso-42001
+        ref: Annex A.8
+        note: The Form marks this item for downstream providers; ISO/IEC 42001
+          keeps information for interested parties under Annex A.8.
+      - target: iso-42005
+        ref: Clause 6
+        note: The impact-assessment record ISO/IEC 42005 documents under this
+          clause covers the model's architecture.
+  - field: XI.1.1.e
+    targets:
+      - target: eu-gpai-code
+        ref: Measure 1.1
+        note: Measure 1.1's Model Documentation is where the Code keeps the
+          modality and format of the model's inputs and outputs.
+      - target: eu-gpai-code
+        ref: Measure 1.2
+        note: The Form marks this item for downstream providers; Measure 1.2
+          provides the current Model Documentation to them.
+      - target: eu-gpai-code
+        ref: Measure 1.3
+        note: Measure 1.3 controls this item's documentation for quality and
+          integrity and retains it as evidence.
+      - target: iso-42001
+        ref: Clause 7.5
+        note: ISO/IEC 42001 keeps the input and output modalities and formats
+          as documented information under this clause.
+      - target: iso-42001
+        ref: Annex A.8
+        note: The Form marks this item for downstream providers; ISO/IEC 42001
+          keeps information for interested parties under Annex A.8.
+  - field: XI.1.1.f
+    targets:
+      - target: eu-gpai-code
+        ref: Measure 1.1
+        note: Measure 1.1's Model Documentation is where the Code keeps the
+          model's licence.
+      - target: eu-gpai-code
+        ref: Measure 1.2
+        note: The Form marks this item for downstream providers; Measure 1.2
+          provides the current Model Documentation to them.
+      - target: eu-gpai-code
+        ref: Measure 1.3
+        note: Measure 1.3 controls this item's documentation for quality and
+          integrity and retains it as evidence.
+      - target: iso-42001
+        ref: Clause 7.5
+        note: ISO/IEC 42001 keeps the model's licence as documented information
+          under this clause.
+      - target: iso-42001
+        ref: Annex A.8
+        note: The Form marks this item for downstream providers; ISO/IEC 42001
+          keeps information for interested parties under Annex A.8.
+  - field: XI.1.2.a
+    targets:
+      - target: eu-gpai-code
+        ref: Measure 1.1
+        note: Measure 1.1's Model Documentation is where the Code keeps the
+          technical means for model integration.
+      - target: eu-gpai-code
+        ref: Measure 1.2
+        note: The Form marks this item for downstream providers; Measure 1.2
+          provides the current Model Documentation to them.
+      - target: eu-gpai-code
+        ref: Measure 1.3
+        note: Measure 1.3 controls this item's documentation for quality and
+          integrity and retains it as evidence.
+      - target: nist-ai-rmf
+        ref: MAP 2.2
+        note: The Framework keeps the documentation that assists AI actors in
+          using and overseeing the system here.
+      - target: iso-42001
+        ref: Clause 7.5
+        note: ISO/IEC 42001 keeps the integration instructions as documented
+          information under this clause.
+      - target: iso-42001
+        ref: Annex A.8
+        note: The Form marks this item for downstream providers; ISO/IEC 42001
+          keeps information for interested parties under Annex A.8.
+  - field: XI.1.2.b
+    targets:
+      - target: eu-gpai-code
+        ref: Measure 1.1
+        note: Measure 1.1's Model Documentation is where the Code keeps the
+          design specifications of the model and of the training process.
+      - target: eu-gpai-code
+        ref: Measure 1.2
+        note: Measure 1.2 provides this item to the AI Office on request; the
+          Form does not mark it for downstream providers.
+      - target: eu-gpai-code
+        ref: Measure 1.3
+        note: Measure 1.3 controls this item's documentation for quality and
+          integrity and retains it as evidence.
+      - target: nist-ai-rmf
+        ref: MEASURE 2.9
+        note: The Framework has the model explained, validated and documented
+          here.
+      - target: nist-ai-600-1
+        ref: MS-2.9-002
+        note: The Profile keeps the model details, architecture and training
+          approaches among them, in this action.
+      - target: iso-42001
+        ref: Clause 7.5
+        note: ISO/IEC 42001 keeps the design specifications of the model and
+          training process as documented information under this clause.
+      - target: iso-42005
+        ref: Clause 6
+        note: The impact-assessment record ISO/IEC 42005 documents under this
+          clause covers the model's design and training process.
+  - field: XI.1.2.c
+    targets:
+      - target: eu-gpai-code
+        ref: Measure 1.1
+        note: Measure 1.1's Model Documentation is where the Code keeps the
+          data used for training, testing and validation.
+      - target: eu-gpai-code
+        ref: Measure 1.2
+        note: The Form marks this item for downstream providers; Measure 1.2
+          provides the current Model Documentation to them.
+      - target: eu-gpai-code
+        ref: Measure 1.3
+        note: Measure 1.3 controls this item's documentation for quality and
+          integrity and retains it as evidence.
+      - target: nist-ai-rmf
+        ref: MAP 2.3
+        note: The Framework documents data collection and selection
+          considerations here.
+      - target: nist-ai-600-1
+        ref: MP-2.1-001
+        note: The Profile keeps data origin and content lineage documentation
+          in this action.
+      - target: nist-ai-600-1
+        ref: MP-2.3-002
+        note: The Profile keeps the suitability of the data used at each
+          stage in this action.
+      - target: iso-42001
+        ref: Clause 7.5
+        note: ISO/IEC 42001 keeps the data used for training, testing and
+          validation as documented information under this clause.
+      - target: iso-42001
+        ref: Annex A.8
+        note: The Form marks this item for downstream providers; ISO/IEC 42001
+          keeps information for interested parties under Annex A.8.
+      - target: iso-42005
+        ref: Clause 6
+        note: The impact-assessment record ISO/IEC 42005 documents under this
+          clause covers the data an assessment draws on and how it was handled.
+  - field: XI.1.2.d
+    targets:
+      - target: eu-gpai-code
+        ref: Measure 1.1
+        note: Measure 1.1's Model Documentation is where the Code keeps the
+          computational resources used to train the model.
+      - target: eu-gpai-code
+        ref: Measure 1.2
+        note: Measure 1.2 provides this item to the AI Office on request; the
+          Form does not mark it for downstream providers.
+      - target: eu-gpai-code
+        ref: Measure 1.3
+        note: Measure 1.3 controls this item's documentation for quality and
+          integrity and retains it as evidence.
+      - target: iso-42001
+        ref: Clause 7.5
+        note: ISO/IEC 42001 keeps the training computational resources as
+          documented information under this clause.
+  - field: XI.1.2.e
+    targets:
+      - target: eu-gpai-code
+        ref: Measure 1.1
+        note: Measure 1.1's Model Documentation is where the Code keeps the
+          model's energy consumption.
+      - target: eu-gpai-code
+        ref: Measure 1.2
+        note: Measure 1.2 provides this item to the AI Office on request; the
+          Form does not mark it for downstream providers.
+      - target: eu-gpai-code
+        ref: Measure 1.3
+        note: Measure 1.3 controls this item's documentation for quality and
+          integrity and retains it as evidence.
+      - target: nist-ai-rmf
+        ref: MEASURE 2.12
+        note: The Framework assesses and documents the environmental impact of
+          model training here.
+      - target: nist-ai-600-1
+        ref: MS-2.12-003
+        note: The Profile keeps the measurement or estimation of training-time
+          energy use in this action.
+      - target: iso-42001
+        ref: Clause 7.5
+        note: ISO/IEC 42001 keeps the energy consumption as documented
+          information under this clause.
+  - field: XII.1.a
+    targets:
+      - target: eu-gpai-code
+        ref: Measure 1.1
+        note: Measure 1.1's Model Documentation is where the Code keeps the
+          tasks the model is intended to perform.
+      - target: eu-gpai-code
+        ref: Measure 1.2
+        note: Annex XII's information is the set intended for downstream
+          providers; Measure 1.2 provides the current Model Documentation to
+          them.
+      - target: eu-gpai-code
+        ref: Measure 1.3
+        note: Measure 1.3 controls this item's documentation for quality and
+          integrity and retains it as evidence.
+      - target: nist-ai-rmf
+        ref: MAP 1.1
+        note: The Framework documents intended purposes, uses and deployment
+          settings here.
+      - target: nist-ai-rmf
+        ref: MAP 2.1
+        note: The Framework defines the model's specific tasks and methods here.
+      - target: nist-ai-600-1
+        ref: MP-1.1-002
+        note: The Profile keeps the expected and acceptable context of use in
+          this action.
+      - target: iso-42001
+        ref: Clause 7.5
+        note: ISO/IEC 42001 keeps the tasks the model is intended to perform as
+          documented information under this clause.
+      - target: iso-42001
+        ref: Annex A.8
+        note: Annex XII's information is intended for downstream providers;
+          ISO/IEC 42001 keeps information for interested parties under
+          Annex A.8.
+  - field: XII.1.b
+    targets:
+      - target: eu-gpai-code
+        ref: Measure 1.1
+        note: Measure 1.1's Model Documentation is where the Code keeps the
+          acceptable use policies.
+      - target: eu-gpai-code
+        ref: Measure 1.2
+        note: Annex XII's information is the set intended for downstream
+          providers; Measure 1.2 provides the current Model Documentation to
+          them.
+      - target: eu-gpai-code
+        ref: Measure 1.3
+        note: Measure 1.3 controls this item's documentation for quality and
+          integrity and retains it as evidence.
+      - target: nist-ai-rmf
+        ref: MAP 1.1
+        note: Acceptable-use expectations are part of the context of use this
+          subcategory documents.
+      - target: nist-ai-600-1
+        ref: GV-1.4-002
+        note: The Profile keeps transparent acceptable use policies in this
+          action.
+      - target: iso-42001
+        ref: Clause 7.5
+        note: ISO/IEC 42001 keeps the acceptable use policies as documented
+          information under this clause.
+      - target: iso-42001
+        ref: Annex A.8
+        note: Annex XII's information is intended for downstream providers;
+          ISO/IEC 42001 keeps information for interested parties under
+          Annex A.8.
+  - field: XII.1.c
+    targets:
+      - target: eu-gpai-code
+        ref: Measure 1.1
+        note: Measure 1.1's Model Documentation is where the Code keeps the
+          release date and the methods of distribution.
+      - target: eu-gpai-code
+        ref: Measure 1.2
+        note: Annex XII's information is the set intended for downstream
+          providers; Measure 1.2 provides the current Model Documentation to
+          them.
+      - target: eu-gpai-code
+        ref: Measure 1.3
+        note: Measure 1.3 controls this item's documentation for quality and
+          integrity and retains it as evidence.
+      - target: iso-42001
+        ref: Clause 7.5
+        note: ISO/IEC 42001 keeps the release date and distribution methods as
+          documented information under this clause.
+      - target: iso-42001
+        ref: Annex A.8
+        note: Annex XII's information is intended for downstream providers;
+          ISO/IEC 42001 keeps information for interested parties under
+          Annex A.8.
+  - field: XII.1.d
+    targets:
+      - target: eu-gpai-code
+        ref: Measure 1.1
+        note: Measure 1.1's Model Documentation is where the Code keeps the
+          model's interaction with external hardware or software.
+      - target: eu-gpai-code
+        ref: Measure 1.2
+        note: Annex XII's information is the set intended for downstream
+          providers; Measure 1.2 provides the current Model Documentation to
+          them.
+      - target: eu-gpai-code
+        ref: Measure 1.3
+        note: Measure 1.3 controls this item's documentation for quality and
+          integrity and retains it as evidence.
+      - target: iso-42001
+        ref: Clause 7.5
+        note: ISO/IEC 42001 keeps the hardware and software interaction
+          requirements as documented information under this clause.
+      - target: iso-42001
+        ref: Annex A.8
+        note: Annex XII's information is intended for downstream providers;
+          ISO/IEC 42001 keeps information for interested parties under
+          Annex A.8.
+  - field: XII.1.e
+    targets:
+      - target: eu-gpai-code
+        ref: Measure 1.1
+        note: Measure 1.1's Model Documentation is where the Code keeps the
+          versions of relevant software.
+      - target: eu-gpai-code
+        ref: Measure 1.2
+        note: Annex XII's information is the set intended for downstream
+          providers; Measure 1.2 provides the current Model Documentation to
+          them.
+      - target: eu-gpai-code
+        ref: Measure 1.3
+        note: Measure 1.3 controls this item's documentation for quality and
+          integrity and retains it as evidence.
+      - target: iso-42001
+        ref: Clause 7.5
+        note: ISO/IEC 42001 keeps the software versions as documented
+          information under this clause.
+      - target: iso-42001
+        ref: Annex A.8
+        note: Annex XII's information is intended for downstream providers;
+          ISO/IEC 42001 keeps information for interested parties under
+          Annex A.8.
+  - field: XII.1.f
+    targets:
+      - target: eu-gpai-code
+        ref: Measure 1.1
+        note: Measure 1.1's Model Documentation is where the Code keeps the
+          model's architecture and parameter count.
+      - target: eu-gpai-code
+        ref: Measure 1.2
+        note: Annex XII's information is the set intended for downstream
+          providers; Measure 1.2 provides the current Model Documentation to
+          them.
+      - target: eu-gpai-code
+        ref: Measure 1.3
+        note: Measure 1.3 controls this item's documentation for quality and
+          integrity and retains it as evidence.
+      - target: nist-ai-rmf
+        ref: MEASURE 2.9
+        note: The Framework has the model itself explained, validated and
+          documented here.
+      - target: nist-ai-600-1
+        ref: MS-2.9-002
+        note: The Profile keeps the model details, the architecture among
+          them, in this action.
+      - target: iso-42001
+        ref: Clause 7.5
+        note: ISO/IEC 42001 keeps the architecture and parameter count as
+          documented information under this clause.
+      - target: iso-42001
+        ref: Annex A.8
+        note: Annex XII's information is intended for downstream providers;
+          ISO/IEC 42001 keeps information for interested parties under
+          Annex A.8.
+      - target: iso-42005
+        ref: Clause 6
+        note: The impact-assessment record ISO/IEC 42005 documents under this
+          clause covers the model's architecture.
+  - field: XII.1.g
+    targets:
+      - target: eu-gpai-code
+        ref: Measure 1.1
+        note: Measure 1.1's Model Documentation is where the Code keeps the
+          modality and format of the model's inputs and outputs.
+      - target: eu-gpai-code
+        ref: Measure 1.2
+        note: Annex XII's information is the set intended for downstream
+          providers; Measure 1.2 provides the current Model Documentation to
+          them.
+      - target: eu-gpai-code
+        ref: Measure 1.3
+        note: Measure 1.3 controls this item's documentation for quality and
+          integrity and retains it as evidence.
+      - target: iso-42001
+        ref: Clause 7.5
+        note: ISO/IEC 42001 keeps the input and output modalities and formats
+          as documented information under this clause.
+      - target: iso-42001
+        ref: Annex A.8
+        note: Annex XII's information is intended for downstream providers;
+          ISO/IEC 42001 keeps information for interested parties under
+          Annex A.8.
+  - field: XII.1.h
+    targets:
+      - target: eu-gpai-code
+        ref: Measure 1.1
+        note: Measure 1.1's Model Documentation is where the Code keeps the
+          model's licence.
+      - target: eu-gpai-code
+        ref: Measure 1.2
+        note: Annex XII's information is the set intended for downstream
+          providers; Measure 1.2 provides the current Model Documentation to
+          them.
+      - target: eu-gpai-code
+        ref: Measure 1.3
+        note: Measure 1.3 controls this item's documentation for quality and
+          integrity and retains it as evidence.
+      - target: iso-42001
+        ref: Clause 7.5
+        note: ISO/IEC 42001 keeps the model's licence as documented information
+          under this clause.
+      - target: iso-42001
+        ref: Annex A.8
+        note: Annex XII's information is intended for downstream providers;
+          ISO/IEC 42001 keeps information for interested parties under
+          Annex A.8.
+  - field: XII.2.a
+    targets:
+      - target: eu-gpai-code
+        ref: Measure 1.1
+        note: Measure 1.1's Model Documentation is where the Code keeps the
+          technical means for model integration.
+      - target: eu-gpai-code
+        ref: Measure 1.2
+        note: Annex XII's information is the set intended for downstream
+          providers; Measure 1.2 provides the current Model Documentation to
+          them.
+      - target: eu-gpai-code
+        ref: Measure 1.3
+        note: Measure 1.3 controls this item's documentation for quality and
+          integrity and retains it as evidence.
+      - target: nist-ai-rmf
+        ref: MAP 2.2
+        note: The Framework keeps the documentation that assists AI actors in
+          using and overseeing the system here.
+      - target: iso-42001
+        ref: Clause 7.5
+        note: ISO/IEC 42001 keeps the integration instructions as documented
+          information under this clause.
+      - target: iso-42001
+        ref: Annex A.8
+        note: Annex XII's information is intended for downstream providers;
+          ISO/IEC 42001 keeps information for interested parties under
+          Annex A.8.
+  - field: XII.2.b
+    targets:
+      - target: eu-gpai-code
+        ref: Measure 1.1
+        note: Measure 1.1's Model Documentation is where the Code keeps the
+          modality, format and maximum size of the model's inputs and outputs.
+      - target: eu-gpai-code
+        ref: Measure 1.2
+        note: Annex XII's information is the set intended for downstream
+          providers; Measure 1.2 provides the current Model Documentation to
+          them.
+      - target: eu-gpai-code
+        ref: Measure 1.3
+        note: Measure 1.3 controls this item's documentation for quality and
+          integrity and retains it as evidence.
+      - target: iso-42001
+        ref: Clause 7.5
+        note: ISO/IEC 42001 keeps the input and output sizes as documented
+          information under this clause.
+      - target: iso-42001
+        ref: Annex A.8
+        note: Annex XII's information is intended for downstream providers;
+          ISO/IEC 42001 keeps information for interested parties under
+          Annex A.8.
+  - field: XII.2.c
+    targets:
+      - target: eu-gpai-code
+        ref: Measure 1.1
+        note: Measure 1.1's Model Documentation is where the Code keeps the
+          data used for training, testing and validation.
+      - target: eu-gpai-code
+        ref: Measure 1.2
+        note: Annex XII's information is the set intended for downstream
+          providers; Measure 1.2 provides the current Model Documentation to
+          them.
+      - target: eu-gpai-code
+        ref: Measure 1.3
+        note: Measure 1.3 controls this item's documentation for quality and
+          integrity and retains it as evidence.
+      - target: nist-ai-rmf
+        ref: MAP 2.3
+        note: The Framework documents data collection and selection
+          considerations here.
+      - target: nist-ai-600-1
+        ref: MP-2.1-001
+        note: The Profile keeps data origin and content lineage documentation
+          in this action.
+      - target: nist-ai-600-1
+        ref: MP-2.3-002
+        note: The Profile keeps the suitability of the data used at each
+          stage in this action.
+      - target: iso-42001
+        ref: Clause 7.5
+        note: ISO/IEC 42001 keeps the data used for training, testing and
+          validation as documented information under this clause.
+      - target: iso-42001
+        ref: Annex A.8
+        note: Annex XII's information is intended for downstream providers;
+          ISO/IEC 42001 keeps information for interested parties under
+          Annex A.8.
+      - target: iso-42005
+        ref: Clause 6
+        note: The impact-assessment record ISO/IEC 42005 documents under this
+          clause covers the data an assessment draws on and how it was handled.
+# Act-canonical terms with aliases into the connected instruments.
+# ISO/IEC 22989 predates the Act: its role terms map partially, and it has no
+# general-purpose-AI model or downstream-provider concepts, so those entries
+# carry no ISO alias. The Korea entry carries the Art. 2(2) definition
+# verbatim from the KLRI translation.
+terminology:
+  - act_term: AI system # Art. 3(1)
+    aliases:
+      - target: oecd-ai-principles
+        term: AI system
+        note: Lineage; the Act's Art. 3(1) definition aligns with the OECD's
+          AI-system definition as revised in 2023; the OECD has no
+          general-purpose-AI model definition, which is the Act's own concept.
+      - target: iso-22989
+        term: AI system
+        note: Partial match only, an alias rather than equivalence; the ISO
+          term predates the Act and carries no placing-on-the-market or
+          harmonised regulatory framing.
+      - target: kr-ai-basic-act
+        term: AI system
+        note: "KLRI translation, Art. 2(2): 'AI system' means an AI-based system
+          that infers outputs such as predictions, recommendations, and
+          decisions that affect real and virtual environments for a given goal
+          with various levels of autonomy and adaptability; divergence: the
+          Korean definition builds on its own 'artificial intelligence' concept
+          (Art. 2(1)) and a given-goal framing, not the Act's machine-based,
+          deployment-adaptive framing."
+  - act_term: provider # Art. 3(3)
+    aliases:
+      - target: iso-22989
+        term: AI producer
+        note: Partial match only; the ISO stakeholder roles predate the Act and
+          split design, development and supply differently; ISO has no
+          general-purpose-AI model or downstream-provider concepts.
+      - target: iso-22989
+        term: AI provider
+        note: Partial match only; the ISO supplying role does not carry the
+          Act's placing-on-the-market trigger, and the Act's provider also
+          covers having a model developed under its own name.
+      - target: kr-ai-basic-act
+        term: AI development business operator
+        note: False friend; Korea's Art. 2(7)(a) operator develops and provides
+          AI as a business; the Act's provider turns on placing on the market
+          or putting into service, and carries the documentation duties.
+  - act_term: deployer # Art. 3(4)
+    aliases:
+      - target: iso-22989
+        term: AI customer
+        note: Partial match only; the ISO role covers use of an AI product or
+          service; the Act's deployer is defined by use under its own
+          authority, with duties of its own.
+      - target: kr-ai-basic-act
+        term: AI use business operator
+        note: False friend; Korea's Art. 2(7)(b) operator is a business
+          providing AI products or services; the Act's deployer is the user
+          under whose authority the system is used.
+  - act_term: general-purpose AI model # Art. 3(63)
+    aliases:
+      - target: kr-ai-basic-act
+        term: Generative AI
+        note: "Divergence: Korea's Art. 2(5) term is about an AI system that
+          generates text, sound, images and other outputs by imitating input
+          data; the Act's concept is a model with generality across tasks,
+          placed on the market; related, not equivalent."
+  - act_term: high-risk AI system # Art. 3(14)
+    aliases:
+      - target: kr-ai-basic-act
+        term: High-impact AI
+        note: "Divergence: Korea's Art. 2(4) threshold-plus-list concept (eleven
+          areas, plus areas set by Presidential Decree) overlaps but does not
+          match the Act's high-risk classification by product-safety route or
+          Annex III use."

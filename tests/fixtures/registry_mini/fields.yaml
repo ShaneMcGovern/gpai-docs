@@ -1,0 +1,18 @@
+schema: 1
+pack: eu-ai-act
+jurisdiction: EU
+instrument: Regulation (EU) 2024/1689
+covers: [technical-documentation, transparency-information]
+fields:
+  - id: XI.1.1.a
+    annex: XI
+    section: 1
+    point: "1(a)"
+    label: Tasks the model is intended to perform
+    recipients: [ai_office, nca]
+    form:
+      rows: ["1"]
+      audience_flags: [ai_office, nca]
+    source: xi-1-1-a
+    model_field: annex_xi.intended_tasks
+    rules: [completeness, type:text]

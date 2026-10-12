@@ -1,0 +1,754 @@
+schema: 1
+pack: eu-ai-act
+sources:
+  - id: reg-2024-1689-annex-xi-chapeau
+    kind: regulation
+    instrument: Regulation (EU) 2024/1689
+    celex: 02024R1689-20260727
+    location: Annex XI, Section 1, chapeau
+    language: en
+    url: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02024R1689-20260727
+    fetch_url: https://publications.europa.eu/resource/cellar/b1730fb2-8f1c-11f1-9262-01aa75ed71a1.0001.03/DOC_1
+    extraction:
+      kind: chapeau
+      annex: XI
+    retrieved: 2026-10-08
+    verification: extract
+    text:
+      "The technical documentation referred to in Article 53(1), point (a) shall
+      contain at least the following information as appropriate to the size and risk
+      profile of the model:"
+    sha256: 8e8e1df288f0431da48a02c65e0b863ae10334422b0fd403b73f57c0ef9b7f9c
+  - id: reg-2024-1689-annex-xi-1-1-a
+    kind: regulation
+    instrument: Regulation (EU) 2024/1689
+    celex: 02024R1689-20260727
+    location: Annex XI, Section 1, point 1(a)
+    language: en
+    url: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02024R1689-20260727
+    fetch_url: https://publications.europa.eu/resource/cellar/b1730fb2-8f1c-11f1-9262-01aa75ed71a1.0001.03/DOC_1
+    extraction:
+      kind: element
+      annex: XI
+      section: 1
+      item: 1
+      letter: a
+    retrieved: 2026-10-08
+    verification: extract
+    text:
+      the tasks that the model is intended to perform and the type and nature of
+      AI systems in which it can be integrated;
+    sha256: 71e8da87f97eba0ea100ccc9450ef3ed78f007353df2e821264ff67fd8af3024
+  - id: reg-2024-1689-annex-xi-1-1-b
+    kind: regulation
+    instrument: Regulation (EU) 2024/1689
+    celex: 02024R1689-20260727
+    location: Annex XI, Section 1, point 1(b)
+    language: en
+    url: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02024R1689-20260727
+    fetch_url: https://publications.europa.eu/resource/cellar/b1730fb2-8f1c-11f1-9262-01aa75ed71a1.0001.03/DOC_1
+    extraction:
+      kind: element
+      annex: XI
+      section: 1
+      item: 1
+      letter: b
+    retrieved: 2026-10-08
+    verification: extract
+    text: the acceptable use policies applicable;
+    sha256: b88149aa9f0bab64802837701e1078fa5faa5b3884db2e8b5c53a5b1bf4194cc
+  - id: reg-2024-1689-annex-xi-1-1-c
+    kind: regulation
+    instrument: Regulation (EU) 2024/1689
+    celex: 02024R1689-20260727
+    location: Annex XI, Section 1, point 1(c)
+    language: en
+    url: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02024R1689-20260727
+    fetch_url: https://publications.europa.eu/resource/cellar/b1730fb2-8f1c-11f1-9262-01aa75ed71a1.0001.03/DOC_1
+    extraction:
+      kind: element
+      annex: XI
+      section: 1
+      item: 1
+      letter: c
+    retrieved: 2026-10-08
+    verification: extract
+    text: the date of release and methods of distribution;
+    sha256: 6aaa8a996ddd4ca2fe1ecca2a24324758b72a13ea96adb3ce4de1b3c727c5ebc
+  - id: reg-2024-1689-annex-xi-1-1-d
+    kind: regulation
+    instrument: Regulation (EU) 2024/1689
+    celex: 02024R1689-20260727
+    location: Annex XI, Section 1, point 1(d)
+    language: en
+    url: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02024R1689-20260727
+    fetch_url: https://publications.europa.eu/resource/cellar/b1730fb2-8f1c-11f1-9262-01aa75ed71a1.0001.03/DOC_1
+    extraction:
+      kind: element
+      annex: XI
+      section: 1
+      item: 1
+      letter: d
+    retrieved: 2026-10-08
+    verification: extract
+    text: the architecture and number of parameters;
+    sha256: f694fdc774a9ff4930c104d34a907c4cd553229029255122a974d9be640c30a4
+  - id: reg-2024-1689-annex-xi-1-1-e
+    kind: regulation
+    instrument: Regulation (EU) 2024/1689
+    celex: 02024R1689-20260727
+    location: Annex XI, Section 1, point 1(e)
+    language: en
+    url: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02024R1689-20260727
+    fetch_url: https://publications.europa.eu/resource/cellar/b1730fb2-8f1c-11f1-9262-01aa75ed71a1.0001.03/DOC_1
+    extraction:
+      kind: element
+      annex: XI
+      section: 1
+      item: 1
+      letter: e
+    retrieved: 2026-10-08
+    verification: extract
+    text: the modality (e.g. text, image) and format of inputs and outputs;
+    sha256: c473e16860d3c3f5acbdf109f11011a6684c40dcb82f78ec123e4a5410c6857f
+  - id: reg-2024-1689-annex-xi-1-1-f
+    kind: regulation
+    instrument: Regulation (EU) 2024/1689
+    celex: 02024R1689-20260727
+    location: Annex XI, Section 1, point 1(f)
+    language: en
+    url: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02024R1689-20260727
+    fetch_url: https://publications.europa.eu/resource/cellar/b1730fb2-8f1c-11f1-9262-01aa75ed71a1.0001.03/DOC_1
+    extraction:
+      kind: element
+      annex: XI
+      section: 1
+      item: 1
+      letter: f
+    retrieved: 2026-10-08
+    verification: extract
+    text: the licence.
+    sha256: 4a0a61173db76e7fff2db23447bb58040dd148a58eb695c9c878265fac637195
+  - id: reg-2024-1689-annex-xi-1-2-a
+    kind: regulation
+    instrument: Regulation (EU) 2024/1689
+    celex: 02024R1689-20260727
+    location: Annex XI, Section 1, point 2(a)
+    language: en
+    url: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02024R1689-20260727
+    fetch_url: https://publications.europa.eu/resource/cellar/b1730fb2-8f1c-11f1-9262-01aa75ed71a1.0001.03/DOC_1
+    extraction:
+      kind: element
+      annex: XI
+      section: 1
+      item: 2
+      letter: a
+    retrieved: 2026-10-08
+    verification: extract
+    text:
+      the technical means (e.g. instructions of use, infrastructure, tools) required
+      for the general-purpose AI model to be integrated in AI systems;
+    sha256: 27ea7f0fed0ad52112510bfca5459821cecf268add7c2c06fc825f91d5fb5baf
+  - id: reg-2024-1689-annex-xi-1-2-b
+    kind: regulation
+    instrument: Regulation (EU) 2024/1689
+    celex: 02024R1689-20260727
+    location: Annex XI, Section 1, point 2(b)
+    language: en
+    url: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02024R1689-20260727
+    fetch_url: https://publications.europa.eu/resource/cellar/b1730fb2-8f1c-11f1-9262-01aa75ed71a1.0001.03/DOC_1
+    extraction:
+      kind: element
+      annex: XI
+      section: 1
+      item: 2
+      letter: b
+    retrieved: 2026-10-08
+    verification: extract
+    text:
+      the design specifications of the model and training process, including training
+      methodologies and techniques, the key design choices including the rationale and
+      assumptions made; what the model is designed to optimise for and the relevance
+      of the different parameters, as applicable;
+    sha256: e9da5c1b81c5ce1b292cf01acf1026b204ccdef5421d4e118f32ef407d451b2c
+  - id: reg-2024-1689-annex-xi-1-2-c
+    kind: regulation
+    instrument: Regulation (EU) 2024/1689
+    celex: 02024R1689-20260727
+    location: Annex XI, Section 1, point 2(c)
+    language: en
+    url: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02024R1689-20260727
+    fetch_url: https://publications.europa.eu/resource/cellar/b1730fb2-8f1c-11f1-9262-01aa75ed71a1.0001.03/DOC_1
+    extraction:
+      kind: element
+      annex: XI
+      section: 1
+      item: 2
+      letter: c
+    retrieved: 2026-10-08
+    verification: extract
+    text:
+      information on the data used for training, testing and validation, where applicable,
+      including the type and provenance of data and curation methodologies (e.g. cleaning,
+      filtering, etc.), the number of data points, their scope and main characteristics;
+      how the data was obtained and selected as well as all other measures to detect
+      the unsuitability of data sources and methods to detect identifiable biases, where
+      applicable;
+    sha256: f86de395670dc8350b45fc0e9e6c97cbd458b88c66fae3f423b6a1e587344f84
+  - id: reg-2024-1689-annex-xi-1-2-d
+    kind: regulation
+    instrument: Regulation (EU) 2024/1689
+    celex: 02024R1689-20260727
+    location: Annex XI, Section 1, point 2(d)
+    language: en
+    url: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02024R1689-20260727
+    fetch_url: https://publications.europa.eu/resource/cellar/b1730fb2-8f1c-11f1-9262-01aa75ed71a1.0001.03/DOC_1
+    extraction:
+      kind: element
+      annex: XI
+      section: 1
+      item: 2
+      letter: d
+    retrieved: 2026-10-08
+    verification: extract
+    text:
+      the computational resources used to train the model (e.g. number of floating
+      point operations), training time, and other relevant details related to the training;
+    sha256: bcc4a82790db0a8a53f9a4161bd130eaea0662cc9286753093f094242e421399
+  - id: reg-2024-1689-annex-xi-1-2-e
+    kind: regulation
+    instrument: Regulation (EU) 2024/1689
+    celex: 02024R1689-20260727
+    location: Annex XI, Section 1, point 2(e)
+    language: en
+    url: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02024R1689-20260727
+    fetch_url: https://publications.europa.eu/resource/cellar/b1730fb2-8f1c-11f1-9262-01aa75ed71a1.0001.03/DOC_1
+    extraction:
+      kind: element
+      annex: XI
+      section: 1
+      item: 2
+      letter: e
+    retrieved: 2026-10-08
+    verification: extract
+    text: known or estimated energy consumption of the model.
+    sha256: e61a72d0bbb95c3e562dab4cb4e9515ac59659718b073142889d885e31a9374c
+  - id: reg-2024-1689-annex-xi-1-2-e-note
+    kind: regulation
+    instrument: Regulation (EU) 2024/1689
+    celex: 02024R1689-20260727
+    location: Annex XI, Section 1, note following point 2(e)
+    language: en
+    url: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02024R1689-20260727
+    fetch_url: https://publications.europa.eu/resource/cellar/b1730fb2-8f1c-11f1-9262-01aa75ed71a1.0001.03/DOC_1
+    extraction:
+      kind: following_note
+      annex: XI
+      section: 1
+      item: 2
+      letter: e
+    retrieved: 2026-10-08
+    verification: extract
+    text:
+      With regard to point (e), where the energy consumption of the model is unknown,
+      the energy consumption may be based on information about computational resources
+      used.
+    sha256: e468b8dab1180b4bdfe6936d611d14d64b45ae3e046e89d032edcbf6301b25a0
+  - id: reg-2024-1689-annex-xi-2-1
+    kind: regulation
+    instrument: Regulation (EU) 2024/1689
+    celex: 02024R1689-20260727
+    location: Annex XI, Section 2, item 1
+    language: en
+    url: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02024R1689-20260727
+    fetch_url: https://publications.europa.eu/resource/cellar/b1730fb2-8f1c-11f1-9262-01aa75ed71a1.0001.03/DOC_1
+    extraction:
+      kind: element
+      annex: XI
+      section: 2
+      item: 1
+    retrieved: 2026-10-10
+    verification: extract
+    text:
+      A detailed description of the evaluation strategies, including evaluation results,
+      on the basis of available public evaluation protocols and tools or otherwise of
+      other evaluation methodologies. Evaluation strategies shall include evaluation
+      criteria, metrics and the methodology on the identification of limitations.
+    sha256: 98568afa8a74efc627672fde33afe57b327d3d9766393f50a8c44da4d33bf939
+  - id: reg-2024-1689-annex-xi-2-2
+    kind: regulation
+    instrument: Regulation (EU) 2024/1689
+    celex: 02024R1689-20260727
+    location: Annex XI, Section 2, item 2
+    language: en
+    url: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02024R1689-20260727
+    fetch_url: https://publications.europa.eu/resource/cellar/b1730fb2-8f1c-11f1-9262-01aa75ed71a1.0001.03/DOC_1
+    extraction:
+      kind: element
+      annex: XI
+      section: 2
+      item: 2
+    retrieved: 2026-10-10
+    verification: extract
+    text:
+      Where applicable, a detailed description of the measures put in place for the
+      purpose of conducting internal and/or external adversarial testing (e.g. red
+      teaming), model adaptations, including alignment and fine-tuning.
+    sha256: 2bc6b251f8c08bf8d0e7e9c209c6e0b38d3805e768f47f2c9688bf29cd9bc66d
+  - id: reg-2024-1689-annex-xi-2-3
+    kind: regulation
+    instrument: Regulation (EU) 2024/1689
+    celex: 02024R1689-20260727
+    location: Annex XI, Section 2, item 3
+    language: en
+    url: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02024R1689-20260727
+    fetch_url: https://publications.europa.eu/resource/cellar/b1730fb2-8f1c-11f1-9262-01aa75ed71a1.0001.03/DOC_1
+    extraction:
+      kind: element
+      annex: XI
+      section: 2
+      item: 3
+    retrieved: 2026-10-10
+    verification: extract
+    text:
+      Where applicable, a detailed description of the system architecture explaining how
+      software components build or feed into each other and integrate into the overall
+      processing.
+    sha256: e0822fb3f6e322bb92d8fa2e63dbf5b92b21f392feb028771161206538945c3b
+  - id: reg-2024-1689-annex-xii-chapeau
+    kind: regulation
+    instrument: Regulation (EU) 2024/1689
+    celex: 02024R1689-20260727
+    location: Annex XII, chapeau
+    language: en
+    url: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02024R1689-20260727
+    fetch_url: https://publications.europa.eu/resource/cellar/b1730fb2-8f1c-11f1-9262-01aa75ed71a1.0001.03/DOC_1
+    extraction:
+      kind: chapeau
+      annex: XII
+    retrieved: 2026-10-08
+    verification: extract
+    text:
+      "The information referred to in Article 53(1), point (b) shall contain at
+      least the following:"
+    sha256: 7378b5f83f62d4f11d2ff2294ae702d09cc363d46b4bd3c7abd278e5a07b9740
+  - id: reg-2024-1689-annex-xii-1-a
+    kind: regulation
+    instrument: Regulation (EU) 2024/1689
+    celex: 02024R1689-20260727
+    location: Annex XII, point 1(a)
+    language: en
+    url: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02024R1689-20260727
+    fetch_url: https://publications.europa.eu/resource/cellar/b1730fb2-8f1c-11f1-9262-01aa75ed71a1.0001.03/DOC_1
+    extraction:
+      kind: element
+      annex: XII
+      item: 1
+      letter: a
+    retrieved: 2026-10-08
+    verification: extract
+    text:
+      the tasks that the model is intended to perform and the type and nature of
+      AI systems into which it can be integrated;
+    sha256: 398b418aa2c67ba80a3603b8a67ed8f3ec4f5dfd3723acfcea143e215cc40929
+  - id: reg-2024-1689-annex-xii-1-b
+    kind: regulation
+    instrument: Regulation (EU) 2024/1689
+    celex: 02024R1689-20260727
+    location: Annex XII, point 1(b)
+    language: en
+    url: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02024R1689-20260727
+    fetch_url: https://publications.europa.eu/resource/cellar/b1730fb2-8f1c-11f1-9262-01aa75ed71a1.0001.03/DOC_1
+    extraction:
+      kind: element
+      annex: XII
+      item: 1
+      letter: b
+    retrieved: 2026-10-08
+    verification: extract
+    text: the acceptable use policies applicable;
+    sha256: b88149aa9f0bab64802837701e1078fa5faa5b3884db2e8b5c53a5b1bf4194cc
+  - id: reg-2024-1689-annex-xii-1-c
+    kind: regulation
+    instrument: Regulation (EU) 2024/1689
+    celex: 02024R1689-20260727
+    location: Annex XII, point 1(c)
+    language: en
+    url: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02024R1689-20260727
+    fetch_url: https://publications.europa.eu/resource/cellar/b1730fb2-8f1c-11f1-9262-01aa75ed71a1.0001.03/DOC_1
+    extraction:
+      kind: element
+      annex: XII
+      item: 1
+      letter: c
+    retrieved: 2026-10-08
+    verification: extract
+    text: the date of release and methods of distribution;
+    sha256: 6aaa8a996ddd4ca2fe1ecca2a24324758b72a13ea96adb3ce4de1b3c727c5ebc
+  - id: reg-2024-1689-annex-xii-1-d
+    kind: regulation
+    instrument: Regulation (EU) 2024/1689
+    celex: 02024R1689-20260727
+    location: Annex XII, point 1(d)
+    language: en
+    url: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02024R1689-20260727
+    fetch_url: https://publications.europa.eu/resource/cellar/b1730fb2-8f1c-11f1-9262-01aa75ed71a1.0001.03/DOC_1
+    extraction:
+      kind: element
+      annex: XII
+      item: 1
+      letter: d
+    retrieved: 2026-10-08
+    verification: extract
+    text:
+      how the model interacts, or can be used to interact, with hardware or software
+      that is not part of the model itself, where applicable;
+    sha256: 64f700952ec8eb9f472f9b1c4c277fed13c3845f4244d9e1ad661d9f50b25136
+  - id: reg-2024-1689-annex-xii-1-e
+    kind: regulation
+    instrument: Regulation (EU) 2024/1689
+    celex: 02024R1689-20260727
+    location: Annex XII, point 1(e)
+    language: en
+    url: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02024R1689-20260727
+    fetch_url: https://publications.europa.eu/resource/cellar/b1730fb2-8f1c-11f1-9262-01aa75ed71a1.0001.03/DOC_1
+    extraction:
+      kind: element
+      annex: XII
+      item: 1
+      letter: e
+    retrieved: 2026-10-08
+    verification: extract
+    text:
+      the versions of relevant software related to the use of the general-purpose
+      AI model, where applicable;
+    sha256: 11aa55dcd0f3d872069d4b5901986e6bd5642e12f423679012856d28ed1a0695
+  - id: reg-2024-1689-annex-xii-1-f
+    kind: regulation
+    instrument: Regulation (EU) 2024/1689
+    celex: 02024R1689-20260727
+    location: Annex XII, point 1(f)
+    language: en
+    url: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02024R1689-20260727
+    fetch_url: https://publications.europa.eu/resource/cellar/b1730fb2-8f1c-11f1-9262-01aa75ed71a1.0001.03/DOC_1
+    extraction:
+      kind: element
+      annex: XII
+      item: 1
+      letter: f
+    retrieved: 2026-10-08
+    verification: extract
+    text: the architecture and number of parameters;
+    sha256: f694fdc774a9ff4930c104d34a907c4cd553229029255122a974d9be640c30a4
+  - id: reg-2024-1689-annex-xii-1-g
+    kind: regulation
+    instrument: Regulation (EU) 2024/1689
+    celex: 02024R1689-20260727
+    location: Annex XII, point 1(g)
+    language: en
+    url: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02024R1689-20260727
+    fetch_url: https://publications.europa.eu/resource/cellar/b1730fb2-8f1c-11f1-9262-01aa75ed71a1.0001.03/DOC_1
+    extraction:
+      kind: element
+      annex: XII
+      item: 1
+      letter: g
+    retrieved: 2026-10-08
+    verification: extract
+    text: the modality (e.g. text, image) and format of inputs and outputs;
+    sha256: c473e16860d3c3f5acbdf109f11011a6684c40dcb82f78ec123e4a5410c6857f
+  - id: reg-2024-1689-annex-xii-1-h
+    kind: regulation
+    instrument: Regulation (EU) 2024/1689
+    celex: 02024R1689-20260727
+    location: Annex XII, point 1(h)
+    language: en
+    url: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02024R1689-20260727
+    fetch_url: https://publications.europa.eu/resource/cellar/b1730fb2-8f1c-11f1-9262-01aa75ed71a1.0001.03/DOC_1
+    extraction:
+      kind: element
+      annex: XII
+      item: 1
+      letter: h
+    retrieved: 2026-10-08
+    verification: extract
+    text: the licence for the model.
+    sha256: 2a3c2d3bb22efd3b64a9362df4185795179c75fd2c379ef786718d8aad1836a6
+  - id: reg-2024-1689-annex-xii-2-a
+    kind: regulation
+    instrument: Regulation (EU) 2024/1689
+    celex: 02024R1689-20260727
+    location: Annex XII, point 2(a)
+    language: en
+    url: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02024R1689-20260727
+    fetch_url: https://publications.europa.eu/resource/cellar/b1730fb2-8f1c-11f1-9262-01aa75ed71a1.0001.03/DOC_1
+    extraction:
+      kind: element
+      annex: XII
+      item: 2
+      letter: a
+    retrieved: 2026-10-08
+    verification: extract
+    text:
+      the technical means (e.g. instructions for use, infrastructure, tools) required
+      for the general-purpose AI model to be integrated into AI systems;
+    sha256: 3d5821bdbf98064fbd78dd298221ce77cb34302df35446cb6f3b9c3b095688b2
+  - id: reg-2024-1689-annex-xii-2-b
+    kind: regulation
+    instrument: Regulation (EU) 2024/1689
+    celex: 02024R1689-20260727
+    location: Annex XII, point 2(b)
+    language: en
+    url: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02024R1689-20260727
+    fetch_url: https://publications.europa.eu/resource/cellar/b1730fb2-8f1c-11f1-9262-01aa75ed71a1.0001.03/DOC_1
+    extraction:
+      kind: element
+      annex: XII
+      item: 2
+      letter: b
+    retrieved: 2026-10-08
+    verification: extract
+    text:
+      the modality (e.g. text, image, etc.) and format of the inputs and outputs
+      and their maximum size (e.g. context window length, etc.);
+    sha256: 538c6e39b18e96ebc6fd1a4e9f0a1d33a844945860856ecd9509453285fb7895
+  - id: reg-2024-1689-annex-xii-2-c
+    kind: regulation
+    instrument: Regulation (EU) 2024/1689
+    celex: 02024R1689-20260727
+    location: Annex XII, point 2(c)
+    language: en
+    url: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02024R1689-20260727
+    fetch_url: https://publications.europa.eu/resource/cellar/b1730fb2-8f1c-11f1-9262-01aa75ed71a1.0001.03/DOC_1
+    extraction:
+      kind: element
+      annex: XII
+      item: 2
+      letter: c
+    retrieved: 2026-10-08
+    verification: extract
+    text:
+      information on the data used for training, testing and validation, where applicable,
+      including the type and provenance of data and curation methodologies.
+    sha256: 96719f9b39bd670ed723a1024174a2af347484e0d535c589fa530ead3fda7164
+  - id: reg-2024-1689-art-51-1-a
+    kind: regulation
+    instrument: Regulation (EU) 2024/1689
+    celex: 02024R1689-20260727
+    location: Article 51(1), point (a)
+    language: en
+    url: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02024R1689-20260727
+    fetch_url: https://publications.europa.eu/resource/cellar/b1730fb2-8f1c-11f1-9262-01aa75ed71a1.0001.03/DOC_1
+    extraction:
+      kind: article
+      article: 51
+      paragraph: 1
+      point: a
+    retrieved: 2026-10-08
+    verification: extract
+    text:
+      it has high impact capabilities evaluated on the basis of appropriate technical
+      tools and methodologies, including indicators and benchmarks;
+    sha256: bf7143be738cd6567291b9b728eca526b01e644cbf1a924a8ffd712b127222d2
+  - id: reg-2024-1689-art-51-2
+    kind: regulation
+    instrument: Regulation (EU) 2024/1689
+    celex: 02024R1689-20260727
+    location: Article 51(2)
+    language: en
+    url: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02024R1689-20260727
+    fetch_url: https://publications.europa.eu/resource/cellar/b1730fb2-8f1c-11f1-9262-01aa75ed71a1.0001.03/DOC_1
+    extraction:
+      kind: article
+      article: 51
+      paragraph: 2
+    retrieved: 2026-10-09
+    verification: extract
+    text:
+      A general-purpose AI model shall be presumed to have high impact capabilities
+      pursuant to paragraph 1, point (a), when the cumulative amount of computation
+      used for its training measured in floating point operations is greater than 10^25.
+    sha256: 3bd61f7843bd3ce4861663b5b575eb26a0023ae04a4dbb457d876e11de9aa9f9
+  - id: reg-2024-1689-art-52-1
+    kind: regulation
+    instrument: Regulation (EU) 2024/1689
+    celex: 02024R1689-20260727
+    location: Article 52(1)
+    language: en
+    url: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02024R1689-20260727
+    fetch_url: https://publications.europa.eu/resource/cellar/b1730fb2-8f1c-11f1-9262-01aa75ed71a1.0001.03/DOC_1
+    extraction:
+      kind: article
+      article: 52
+      paragraph: 1
+    retrieved: 2026-10-08
+    verification: extract
+    text:
+      Where a general-purpose AI model meets the condition referred to in Article
+      51(1), point (a), the relevant provider shall notify the Commission without delay
+      and in any event within two weeks after that requirement is met or it becomes
+      known that it will be met. That notification shall include the information necessary
+      to demonstrate that the relevant requirement has been met. If the Commission becomes
+      aware of a general-purpose AI model presenting systemic risks of which it has
+      not been notified, it may decide to designate it as a model with systemic risk.
+    sha256: cf3c848d23747dd5d6e5305464f6b0ad9f2ee9174b7f5fd4b3738f70781c88fa
+  - id: reg-2024-1689-art-53-1-a
+    kind: regulation
+    instrument: Regulation (EU) 2024/1689
+    celex: 02024R1689-20260727
+    location: Article 53(1), point (a)
+    language: en
+    url: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02024R1689-20260727
+    fetch_url: https://publications.europa.eu/resource/cellar/b1730fb2-8f1c-11f1-9262-01aa75ed71a1.0001.03/DOC_1
+    extraction:
+      kind: article
+      article: 53
+      paragraph: 1
+      point: a
+    retrieved: 2026-10-08
+    verification: extract
+    text:
+      draw up and keep up-to-date the technical documentation of the model, including
+      its training and testing process and the results of its evaluation, which shall
+      contain, at a minimum, the information set out in Annex XI for the purpose of
+      providing it, upon request, to the AI Office and the national competent authorities;
+    sha256: 0101b7b55177edc152a905f7efe578bcf5b25eea55bc506443806fb66ac4c32c
+  - id: reg-2024-1689-art-53-1-b
+    kind: regulation
+    instrument: Regulation (EU) 2024/1689
+    celex: 02024R1689-20260727
+    location: Article 53(1), point (b)
+    language: en
+    url: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02024R1689-20260727
+    fetch_url: https://publications.europa.eu/resource/cellar/b1730fb2-8f1c-11f1-9262-01aa75ed71a1.0001.03/DOC_1
+    extraction:
+      kind: article
+      article: 53
+      paragraph: 1
+      point: b
+    retrieved: 2026-10-08
+    verification: extract
+    text:
+      "draw up, keep up-to-date and make available information and documentation
+      to providers of AI systems who intend to integrate the general-purpose AI model
+      into their AI systems. Without prejudice to the need to observe and protect intellectual
+      property rights and confidential business information or trade secrets in accordance
+      with Union and national law, the information and documentation shall:"
+    sha256: 2bce53d0d9b0f25c11c61f91f2f4a050128b944e67d2c2f18dfbbde0491f48a7
+  - id: reg-2024-1689-art-53-4
+    kind: regulation
+    instrument: Regulation (EU) 2024/1689
+    celex: 02024R1689-20260727
+    location: Article 53(4)
+    language: en
+    url: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02024R1689-20260727
+    fetch_url: https://publications.europa.eu/resource/cellar/b1730fb2-8f1c-11f1-9262-01aa75ed71a1.0001.03/DOC_1
+    extraction:
+      kind: article
+      article: 53
+      paragraph: 4
+    retrieved: 2026-10-08
+    verification: extract
+    text:
+      Providers of general-purpose AI models may rely on codes of practice within
+      the meaning of Article 56 to demonstrate compliance with the obligations set out
+      in paragraph 1 of this Article, until a harmonised standard is published. Compliance
+      with European harmonised standards grants providers the presumption of conformity
+      to the extent that those standards cover those obligations. Providers of general-purpose
+      AI models who do not adhere to an approved code of practice or do not comply with
+      a European harmonised standard shall demonstrate alternative adequate means of
+      compliance for assessment by the Commission.
+    sha256: f6ad71e4bea7c3079c3f47cfc018f0bec9e4de6a65ca9ae66f17d3f0af583f43
+  - id: code-gpai-transparency-1-1-documentation
+    kind: code_measure
+    instrument: Code of Practice for General-Purpose AI Models
+    location: Transparency Chapter, Measure 1.1, first paragraph
+    language: en
+    url: https://digital-strategy.ec.europa.eu/en/policies/contents-code-gpai
+    artifact_url: https://ec.europa.eu/newsroom/dae/redirection/document/118120
+    artifact_sha256: 407e3a0a66327847a4bddb811fe619c8a588892ec451d23435d06485c20a4cf8
+    retrieved: 2026-10-08
+    verification: artifact
+    text:
+      Signatories, when placing a general-purpose AI model on the market, will have
+      documented at least all the information referred to in the Model Documentation
+      Form below (hereafter this information is referred to as the ‘Model Documentation’).
+      Signatories may choose to complete the Model Documentation Form provided in the
+      Appendix to comply with this commitment.
+    sha256: 592a8551ab75f96b0f97553a0fd9c1170ffc21e59a6f40bf43b566b93fee7fbd
+  - id: code-gpai-transparency-1-1-retention
+    kind: code_measure
+    instrument: Code of Practice for General-Purpose AI Models
+    location: Transparency Chapter, Measure 1.1, second paragraph
+    language: en
+    url: https://digital-strategy.ec.europa.eu/en/policies/contents-code-gpai
+    artifact_url: https://ec.europa.eu/newsroom/dae/redirection/document/118120
+    artifact_sha256: 407e3a0a66327847a4bddb811fe619c8a588892ec451d23435d06485c20a4cf8
+    retrieved: 2026-10-08
+    verification: artifact
+    text:
+      Signatories will update the Model Documentation to reflect relevant changes
+      in the information contained in the Model Documentation, including in relation
+      to updated versions of the same model, while keeping previous versions of the
+      Model Documentation for a period ending 10 years after the model has been placed
+      on the market.
+    sha256: f6a25ec5f7234b1f5d1e414c2fa6929fa4478cd22c6389ffc9399c018aed4bc0
+  - id: guidelines-c2025-7719-31-compute-reporting
+    kind: guidelines
+    instrument:
+      Commission Guidelines on the scope of the obligations for providers
+      of general-purpose AI models established by Regulation (EU) 2024/1689 (AI Act)
+    location: GPAI Guidelines C(2025) 7719, paragraph 31, compute reporting requirements
+    language: en
+    url: https://digital-strategy.ec.europa.eu/en/library/guidelines-scope-obligations-providers-general-purpose-ai-models-under-ai-act
+    artifact_url: https://ec.europa.eu/newsroom/dae/redirection/document/118340
+    artifact_sha256: 13481bd90108505c477165c8aefb13dbe7a83847bad0e983e09115f78aeefe78
+    retrieved: 2026-10-08
+    verification: artifact
+    text:
+      the amount of compute estimated by the provider that has triggered the requirement
+      to notify, reported in FLOP and with two significant figures (e.g. 2.3x10²⁵ FLOP);
+      a description of the approach used to estimate this amount of compute, including
+      approaches used to make approximations where precise information is not available.
+    sha256: 4e3dbf6c0d4ce80f76c98faf66fa91580a432ef6c5807d29fd70454d011d6646
+  - id: guidelines-c2025-7719-60-one-third-criterion
+    kind: guidelines
+    instrument:
+      Commission Guidelines on the scope of the obligations for providers
+      of general-purpose AI models established by Regulation (EU) 2024/1689 (AI Act)
+    location: GPAI Guidelines C(2025) 7719, paragraph 60
+    language: en
+    url: https://digital-strategy.ec.europa.eu/en/library/guidelines-scope-obligations-providers-general-purpose-ai-models-under-ai-act
+    artifact_url: https://ec.europa.eu/newsroom/dae/redirection/document/118340
+    artifact_sha256: 13481bd90108505c477165c8aefb13dbe7a83847bad0e983e09115f78aeefe78
+    retrieved: 2026-10-08
+    verification: artifact
+    text:
+      Based on the considerations above, an indicative criterion for when a downstream
+      modifier is considered to be the provider of a general-purpose AI model is that
+      the training compute used for the modification is greater than a third of the
+      training compute of the original model (see paragraph 115 for how ‘training compute’
+      should be understood in these guidelines).
+    sha256: 418dbb6f0d0fcab414b9cecd83dc29eb9f821a5b4d41cd4e3762820ef322be15
+  - id: guidelines-c2025-7719-120-compute-estimation
+    kind: guidelines
+    instrument:
+      Commission Guidelines on the scope of the obligations for providers
+      of general-purpose AI models established by Regulation (EU) 2024/1689 (AI Act)
+    location: GPAI Guidelines C(2025) 7719, Annex A.2, paragraph 120
+    language: en
+    url: https://digital-strategy.ec.europa.eu/en/library/guidelines-scope-obligations-providers-general-purpose-ai-models-under-ai-act
+    artifact_url: https://ec.europa.eu/newsroom/dae/redirection/document/118340
+    artifact_sha256: 13481bd90108505c477165c8aefb13dbe7a83847bad0e983e09115f78aeefe78
+    retrieved: 2026-10-08
+    verification: artifact
+    text:
+      Providers may choose any method to estimate the relevant amount of training
+      compute, so long as the estimated amount is, in the providers’ best judgement,
+      accurate within an overall error margin of 30% of the reported estimate. This
+      is to account for the difficulties providers may face in obtaining precise estimates
+      of their model’s cumulative training compute, for example, when estimates are
+      made before training of the model is completed. Providers are nevertheless expected
+      to document the assumptions made in making their estimations, including the method
+      of estimation, and the associated uncertainties.
+    sha256: 7aae5cb6c1fe03b6ac3814ca599a81afcef7e56e3a09d3c783f38b43460e5082

@@ -1,0 +1,473 @@
+schema: 1
+pack: eu-ai-act
+jurisdiction: EU
+instrument: Regulation (EU) 2024/1689
+covers: [technical-documentation, transparency-information]
+# One entry per published element of Annex XI, Section 1 and Section 2, and
+# Annex XII. Each binds the element's stored source text to
+# the Model Documentation Form rows that carry its information, the recipients
+# the information is owed to, the native document key, and its completeness
+# rules. A field lists every form row drawing on the element, in published
+# order; the Form's rows are finer than the elements, so several rows can
+# serve one element and twin elements share rows. `audience_flags` is the
+# union of the listed rows' crosses. `context` names the chapeau that
+# conditions every element; XI.1.2.e also names the conditioning note that
+# follows point 2(e). `condition: systemic_risk` marks a field that applies
+# only to models with systemic risk (Annex XI, Section 2): completeness
+# checks it only when the document says `systemic_risk: true`, and its Form
+# mapping is row-less with the recorded note, because the Model Documentation
+# Form does not carry the section's information.
+fields:
+  - id: XI.1.1.a
+    annex: XI
+    section: 1
+    point: "1(a)"
+    label: Tasks the model is intended to perform
+    recipients: [ai_office, nca]
+    form:
+      rows:
+        - use/intended-uses
+        - use/type-and-nature-of-ai-systems
+      audience_flags: [ai_office, nca, downstream]
+    source: reg-2024-1689-annex-xi-1-1-a
+    context: [reg-2024-1689-annex-xi-chapeau]
+    guidance: Describe the tasks the model is intended to perform and the type
+      and nature of AI systems in which it can be integrated.
+    model_field: annex_xi.intended_tasks
+    rules: [completeness, type:text]
+  - id: XI.1.1.b
+    annex: XI
+    section: 1
+    point: "1(b)"
+    label: Acceptable use policies
+    recipients: [ai_office, nca]
+    form:
+      rows:
+        - use/acceptable-use-policy
+      audience_flags: [ai_office, nca, downstream]
+    source: reg-2024-1689-annex-xi-1-1-b
+    context: [reg-2024-1689-annex-xi-chapeau]
+    guidance: State the acceptable use policies that apply to the model.
+    model_field: annex_xi.acceptable_use_policies
+    rules: [completeness, type:text]
+  - id: XI.1.1.c
+    annex: XI
+    section: 1
+    point: "1(c)"
+    label: Date of release and methods of distribution
+    recipients: [ai_office, nca]
+    form:
+      rows:
+        - general-information/release-date
+        - general-information/union-market-release-date
+        - distribution-and-licenses/distribution-channels
+        - distribution-and-licenses/distribution-channels-downstream-providers
+      audience_flags: [ai_office, nca, downstream]
+    source: reg-2024-1689-annex-xi-1-1-c
+    context: [reg-2024-1689-annex-xi-chapeau]
+    guidance: Give the date on which the model was released and the methods by
+      which it is distributed.
+    model_field: annex_xi.release_date_and_distribution
+    rules: [completeness, type:text]
+  - id: XI.1.1.d
+    annex: XI
+    section: 1
+    point: "1(d)"
+    label: Architecture and number of parameters
+    recipients: [ai_office, nca]
+    form:
+      rows:
+        - model-properties/model-architecture
+        - model-properties/total-model-size
+        - model-properties/total-model-size-parameter-range
+      audience_flags: [ai_office, nca, downstream]
+    source: reg-2024-1689-annex-xi-1-1-d
+    context: [reg-2024-1689-annex-xi-chapeau]
+    guidance: Describe the model's architecture and state the number of
+      parameters.
+    model_field: annex_xi.architecture_and_parameters
+    rules: [completeness, type:text]
+  - id: XI.1.1.e
+    annex: XI
+    section: 1
+    point: "1(e)"
+    label: Modality and format of inputs and outputs
+    recipients: [ai_office, nca]
+    form:
+      rows:
+        - model-properties/input-modalities
+        - model-properties/output-modalities
+      audience_flags: [ai_office, nca, downstream]
+    source: reg-2024-1689-annex-xi-1-1-e
+    context: [reg-2024-1689-annex-xi-chapeau]
+    guidance: Describe the modality (e.g. text, image) and format of the
+      model's inputs and outputs.
+    model_field: annex_xi.input_output_modalities
+    rules: [completeness, type:text]
+  - id: XI.1.1.f
+    annex: XI
+    section: 1
+    point: "1(f)"
+    label: Licence
+    recipients: [ai_office, nca]
+    form:
+      rows:
+        - distribution-and-licenses/license
+        - distribution-and-licenses/license-type-or-category
+        - distribution-and-licenses/license-additional-assets
+      audience_flags: [ai_office, nca, downstream]
+    source: reg-2024-1689-annex-xi-1-1-f
+    context: [reg-2024-1689-annex-xi-chapeau]
+    guidance: State the licence under which the model is made available.
+    model_field: annex_xi.licence
+    rules: [completeness, type:text]
+  - id: XI.1.2.a
+    annex: XI
+    section: 1
+    point: "2(a)"
+    label: Technical means for model integration
+    recipients: [ai_office, nca]
+    form:
+      rows:
+        - use/technical-means-for-model-integration
+      audience_flags: [downstream]
+    source: reg-2024-1689-annex-xi-1-2-a
+    context: [reg-2024-1689-annex-xi-chapeau]
+    guidance: Describe the technical means (e.g. instructions of use,
+      infrastructure, tools) required for the model to be integrated in AI
+      systems.
+    model_field: annex_xi.technical_means_for_integration
+    rules: [completeness, type:text]
+  - id: XI.1.2.b
+    annex: XI
+    section: 1
+    point: "2(b)"
+    label: Design specifications of the model and training process
+    recipients: [ai_office, nca]
+    form:
+      rows:
+        - model-properties/design-specifications-of-the-model
+        - training-process/design-specifications-of-the-training-process
+        - training-process/decision-rationale
+      audience_flags: [ai_office, nca]
+    source: reg-2024-1689-annex-xi-1-2-b
+    context: [reg-2024-1689-annex-xi-chapeau]
+    guidance: Describe the design specifications of the model and of the
+      training process, including the training methodologies and techniques
+      and the key design choices with the rationale and assumptions made.
+      State what the model is designed to optimise for and the relevance of
+      the different parameters.
+    model_field: annex_xi.design_specifications
+    rules: [completeness, type:text]
+  - id: XI.1.2.c
+    annex: XI
+    section: 1
+    point: "2(c)"
+    label: Data used for training, testing and validation
+    recipients: [ai_office, nca]
+    form:
+      rows:
+        - data-used-for-training-testing-and-validation/data-type-modality
+        - data-used-for-training-testing-and-validation/data-provenance
+        - data-used-for-training-testing-and-validation/how-data-was-obtained-and-selected
+        - data-used-for-training-testing-and-validation/number-of-data-points
+        - data-used-for-training-testing-and-validation/number-of-data-points-two-significant-figures
+        - data-used-for-training-testing-and-validation/scope-and-main-characteristics
+        - data-used-for-training-testing-and-validation/data-curation-methodologies
+        - data-used-for-training-testing-and-validation/measures-to-detect-unsuitability-of-data-sources
+        - data-used-for-training-testing-and-validation/measures-to-detect-identifiable-biases
+      audience_flags: [ai_office, nca, downstream]
+    source: reg-2024-1689-annex-xi-1-2-c
+    context: [reg-2024-1689-annex-xi-chapeau]
+    guidance: Cover, where applicable, the type and provenance of the data
+      used for training, testing and validation, its curation methodologies,
+      the number of data points, and their scope and main characteristics.
+      Record how the data was obtained and selected, and the measures and
+      methods used to detect unsuitable data sources and identifiable biases.
+    model_field: annex_xi.training_data
+    rules: [completeness, type:text]
+  - id: XI.1.2.d
+    annex: XI
+    section: 1
+    point: "2(d)"
+    label: Computational resources used to train the model
+    recipients: [ai_office, nca]
+    form:
+      rows:
+        - computational-resources/training-time
+        - computational-resources/training-time-wall-clock-and-hardware-days
+        - computational-resources/amount-of-computation-used-for-training
+        - computational-resources/amount-of-computation-used-for-training-two-significant-figures
+        - computational-resources/measurement-methodology
+      audience_flags: [ai_office, nca]
+    source: reg-2024-1689-annex-xi-1-2-d
+    context: [reg-2024-1689-annex-xi-chapeau]
+    guidance: State the computational resources used to train the model (e.g.
+      number of floating point operations), the training time, and other
+      relevant details related to the training.
+    model_field: annex_xi.computational_resources
+    rules:
+      [
+        completeness,
+        type:compute,
+        consistency:notification.due,
+        consistency:compute.reporting,
+      ]
+  - id: XI.1.2.e
+    annex: XI
+    section: 1
+    point: "2(e)"
+    label: Energy consumption
+    recipients: [ai_office, nca]
+    form:
+      rows:
+        - energy-consumption/amount-of-energy-used-for-training
+        - energy-consumption/measurement-methodology-energy
+        - energy-consumption/benchmarked-amount-of-computation-used-for-inference
+        - energy-consumption/measurement-methodology-inference
+      audience_flags: [ai_office, nca]
+    source: reg-2024-1689-annex-xi-1-2-e
+    context:
+      - reg-2024-1689-annex-xi-chapeau
+      - reg-2024-1689-annex-xi-1-2-e-note
+    guidance: If the energy consumption is unknown, an estimate based on the
+      training compute is acceptable; state the basis.
+    model_field: annex_xi.energy_consumption
+    rules: [completeness, type:energy]
+  - id: XI.2.1
+    annex: XI
+    section: 2
+    point: "1"
+    label: Evaluation strategies
+    recipients: [ai_office]
+    form:
+      rows: []
+      audience_flags: []
+      note: not carried by the Model Documentation Form
+    source: reg-2024-1689-annex-xi-2-1
+    guidance: Applies to models with systemic risk; describe the evaluation
+      strategies, including evaluation results, on the basis of available
+      public evaluation protocols and tools or otherwise of other evaluation
+      methodologies; state the evaluation criteria, metrics and the
+      methodology for identifying limitations.
+    model_field: annex_xi.evaluation_strategies
+    rules: [completeness, type:text]
+    condition: systemic_risk
+  - id: XI.2.2
+    annex: XI
+    section: 2
+    point: "2"
+    label: Adversarial testing and model adaptations
+    recipients: [ai_office]
+    form:
+      rows: []
+      audience_flags: []
+      note: not carried by the Model Documentation Form
+    source: reg-2024-1689-annex-xi-2-2
+    guidance: Applies to models with systemic risk; describe, where
+      applicable, the measures put in place for internal and/or external
+      adversarial testing (e.g. red teaming), model adaptations, including
+      alignment and fine-tuning.
+    model_field: annex_xi.adversarial_testing
+    rules: [completeness, type:text]
+    condition: systemic_risk
+  - id: XI.2.3
+    annex: XI
+    section: 2
+    point: "3"
+    label: System architecture
+    recipients: [ai_office]
+    form:
+      rows: []
+      audience_flags: []
+      note: not carried by the Model Documentation Form
+    source: reg-2024-1689-annex-xi-2-3
+    guidance: Applies to models with systemic risk; describe, where
+      applicable, the system architecture explaining how software components
+      build or feed into each other and integrate into the overall
+      processing.
+    model_field: annex_xi.system_architecture
+    rules: [completeness, type:text]
+    condition: systemic_risk
+  - id: XII.1.a
+    annex: XII
+    point: "1(a)"
+    label: Tasks the model is intended to perform
+    recipients: [downstream]
+    form:
+      rows:
+        - use/intended-uses
+        - use/type-and-nature-of-ai-systems
+      audience_flags: [ai_office, nca, downstream]
+    source: reg-2024-1689-annex-xii-1-a
+    context: [reg-2024-1689-annex-xii-chapeau]
+    guidance: Describe the tasks the model is intended to perform and the type
+      and nature of AI systems into which it can be integrated.
+    model_field: annex_xii.intended_tasks
+    rules: [completeness, type:text]
+  - id: XII.1.b
+    annex: XII
+    point: "1(b)"
+    label: Acceptable use policies
+    recipients: [downstream]
+    form:
+      rows:
+        - use/acceptable-use-policy
+      audience_flags: [ai_office, nca, downstream]
+    source: reg-2024-1689-annex-xii-1-b
+    context: [reg-2024-1689-annex-xii-chapeau]
+    guidance: State the acceptable use policies that apply to the model.
+    model_field: annex_xii.acceptable_use_policies
+    rules: [completeness, type:text]
+  - id: XII.1.c
+    annex: XII
+    point: "1(c)"
+    label: Date of release and methods of distribution
+    recipients: [downstream]
+    form:
+      rows:
+        - general-information/release-date
+        - general-information/union-market-release-date
+        - distribution-and-licenses/distribution-channels
+        - distribution-and-licenses/distribution-channels-downstream-providers
+      audience_flags: [ai_office, nca, downstream]
+    source: reg-2024-1689-annex-xii-1-c
+    context: [reg-2024-1689-annex-xii-chapeau]
+    guidance: Give the date on which the model was released and the methods by
+      which it is distributed.
+    model_field: annex_xii.release_date_and_distribution
+    rules: [completeness, type:text]
+  - id: XII.1.d
+    annex: XII
+    point: "1(d)"
+    label: Interaction with hardware or software
+    recipients: [downstream]
+    form:
+      rows:
+        - use/required-hardware
+        - use/required-software
+      audience_flags: [downstream]
+    source: reg-2024-1689-annex-xii-1-d
+    context: [reg-2024-1689-annex-xii-chapeau]
+    guidance: Describe, where applicable, how the model interacts, or can be
+      used to interact, with hardware or software that is not part of the
+      model itself.
+    model_field: annex_xii.hardware_software_interaction
+    rules: [completeness, type:text]
+  - id: XII.1.e
+    annex: XII
+    point: "1(e)"
+    label: Versions of relevant software
+    recipients: [downstream]
+    form:
+      rows:
+        - use/required-software
+      audience_flags: [downstream]
+    source: reg-2024-1689-annex-xii-1-e
+    context: [reg-2024-1689-annex-xii-chapeau]
+    guidance: State, where applicable, the versions of relevant software
+      related to the use of the model.
+    model_field: annex_xii.software_versions
+    rules: [completeness, type:text]
+  - id: XII.1.f
+    annex: XII
+    point: "1(f)"
+    label: Architecture and number of parameters
+    recipients: [downstream]
+    form:
+      rows:
+        - model-properties/model-architecture
+        - model-properties/total-model-size
+        - model-properties/total-model-size-parameter-range
+      audience_flags: [ai_office, nca, downstream]
+    source: reg-2024-1689-annex-xii-1-f
+    context: [reg-2024-1689-annex-xii-chapeau]
+    guidance: Describe the model's architecture and state the number of
+      parameters.
+    model_field: annex_xii.architecture_and_parameters
+    rules: [completeness, type:text]
+  - id: XII.1.g
+    annex: XII
+    point: "1(g)"
+    label: Modality and format of inputs and outputs
+    recipients: [downstream]
+    form:
+      rows:
+        - model-properties/input-modalities
+        - model-properties/output-modalities
+      audience_flags: [ai_office, nca, downstream]
+    source: reg-2024-1689-annex-xii-1-g
+    context: [reg-2024-1689-annex-xii-chapeau]
+    guidance: Describe the modality (e.g. text, image) and format of the
+      model's inputs and outputs.
+    model_field: annex_xii.input_output_modalities
+    rules: [completeness, type:text]
+  - id: XII.1.h
+    annex: XII
+    point: "1(h)"
+    label: Licence for the model
+    recipients: [downstream]
+    form:
+      rows:
+        - distribution-and-licenses/license
+        - distribution-and-licenses/license-type-or-category
+        - distribution-and-licenses/license-additional-assets
+      audience_flags: [ai_office, nca, downstream]
+    source: reg-2024-1689-annex-xii-1-h
+    context: [reg-2024-1689-annex-xii-chapeau]
+    guidance: State the licence for the model.
+    model_field: annex_xii.licence
+    rules: [completeness, type:text]
+  - id: XII.2.a
+    annex: XII
+    point: "2(a)"
+    label: Technical means for model integration
+    recipients: [downstream]
+    form:
+      rows:
+        - use/technical-means-for-model-integration
+      audience_flags: [downstream]
+    source: reg-2024-1689-annex-xii-2-a
+    context: [reg-2024-1689-annex-xii-chapeau]
+    guidance: Describe the technical means (e.g. instructions for use,
+      infrastructure, tools) required for the model to be integrated into AI
+      systems.
+    model_field: annex_xii.technical_means_for_integration
+    rules: [completeness, type:text]
+  - id: XII.2.b
+    annex: XII
+    point: "2(b)"
+    label: Modality, format and maximum size of inputs and outputs
+    recipients: [downstream]
+    form:
+      rows:
+        - model-properties/input-modalities
+        - model-properties/input-modalities-maximum-size
+        - model-properties/output-modalities
+        - model-properties/output-modalities-maximum-size
+      audience_flags: [ai_office, nca, downstream]
+    source: reg-2024-1689-annex-xii-2-b
+    context: [reg-2024-1689-annex-xii-chapeau]
+    guidance: Describe the modality (e.g. text, image) and format of the
+      inputs and outputs and state their maximum size (e.g. context window
+      length).
+    model_field: annex_xii.modalities_and_maximum_size
+    rules: [completeness, type:text]
+  - id: XII.2.c
+    annex: XII
+    point: "2(c)"
+    label: Data used for training, testing and validation
+    recipients: [downstream]
+    form:
+      rows:
+        - data-used-for-training-testing-and-validation/data-type-modality
+        - data-used-for-training-testing-and-validation/data-provenance
+        - data-used-for-training-testing-and-validation/data-curation-methodologies
+      audience_flags: [ai_office, nca, downstream]
+    source: reg-2024-1689-annex-xii-2-c
+    context: [reg-2024-1689-annex-xii-chapeau]
+    guidance: Cover, where applicable, the type and provenance of the data
+      used for training, testing and validation, and the curation
+      methodologies applied.
+    model_field: annex_xii.training_data
+    rules: [completeness, type:text]

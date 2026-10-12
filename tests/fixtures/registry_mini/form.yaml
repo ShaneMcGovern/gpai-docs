@@ -1,0 +1,12 @@
+schema: 1
+pack: eu-ai-act
+form:
+  name: Model Documentation Form
+  source_url: https://ec.europa.eu/newsroom/dae/redirection/document/118118
+  retrieved: 2026-10-08
+  # sha256 of the canned body tests/test_verify.py serves for this URL.
+  artifact_sha256: 5f253decbca8842c1faf04fe4549f50bf97a4bd6afe6067e4c226bae2d973cd1
+rows:
+  - row: "1"
+    label: General description of the model
+    audience_flags: [ai_office, nca]
