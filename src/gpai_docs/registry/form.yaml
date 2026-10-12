@@ -1,0 +1,148 @@
+schema: 1
+pack: eu-ai-act
+form:
+  name: Model Documentation Form
+  source_url: https://ec.europa.eu/newsroom/dae/redirection/document/118118
+  retrieved: 2026-10-08
+  artifact_sha256: c9319ab941744155040e4ceeddbf189efb69d6c4f063453d208eac8e2f691a6f
+# The Form publishes no row ids, so each `row` below is derived from the
+# published section heading and label (see docs/form-docx-structure.md).
+rows:
+  - row: general-information/legal-name-for-the-model-provider
+    label: Legal name for the model provider
+    audience_flags: [ai_office, nca, downstream]
+  - row: general-information/model-name
+    label: Model name
+    audience_flags: [ai_office, nca, downstream]
+  - row: general-information/model-authenticity
+    label: Model authenticity
+    audience_flags: [ai_office, nca]
+  - row: general-information/release-date
+    label: Release date
+    audience_flags: [ai_office, nca, downstream]
+  - row: general-information/union-market-release-date
+    label: Union market release date
+    audience_flags: [ai_office, nca, downstream]
+  - row: general-information/model-dependencies
+    label: Model dependencies
+    audience_flags: [ai_office, nca, downstream]
+  - row: model-properties/model-architecture
+    label: Model architecture
+    audience_flags: [ai_office, nca, downstream]
+  - row: model-properties/design-specifications-of-the-model
+    label: Design specifications of the model
+    audience_flags: [ai_office, nca]
+  - row: model-properties/input-modalities
+    label: Input modalities
+    audience_flags: [ai_office, nca, downstream]
+  - row: model-properties/input-modalities-maximum-size
+    label: "For each selected modality please include maximum input size or write 'N/A' if not defined"
+    audience_flags: [ai_office, downstream]
+  - row: model-properties/output-modalities
+    label: Output modalities
+    audience_flags: [ai_office, nca, downstream]
+  - row: model-properties/output-modalities-maximum-size
+    label: "For each selected modality please include maximum output size or write 'N/A' if not defined"
+    audience_flags: [downstream]
+  - row: model-properties/total-model-size
+    label: Total model size
+    audience_flags: [ai_office]
+  - row: model-properties/total-model-size-parameter-range
+    label: The range within which the total number of parameters falls
+    audience_flags: [nca, downstream]
+  - row: distribution-and-licenses/distribution-channels
+    label: Distribution channels
+    audience_flags: [ai_office, nca]
+  - row: distribution-and-licenses/distribution-channels-downstream-providers
+    label: Distribution channels
+    audience_flags: [downstream]
+  - row: distribution-and-licenses/license
+    label: License
+    audience_flags: [ai_office, nca]
+  - row: distribution-and-licenses/license-type-or-category
+    label: License
+    audience_flags: [downstream]
+  - row: distribution-and-licenses/license-additional-assets
+    label: License
+    audience_flags: [ai_office, downstream]
+  - row: use/acceptable-use-policy
+    label: Acceptable Use Policy
+    audience_flags: [ai_office, nca, downstream]
+  - row: use/intended-uses
+    label: Intended uses
+    audience_flags: [ai_office, nca, downstream]
+  - row: use/type-and-nature-of-ai-systems
+    label: Type and nature of AI systems in which the general-purpose AI model can be integrated
+    audience_flags: [ai_office, nca, downstream]
+  - row: use/technical-means-for-model-integration
+    label: Technical means for model integration
+    audience_flags: [downstream]
+  - row: use/required-hardware
+    label: Required hardware
+    audience_flags: [downstream]
+  - row: use/required-software
+    label: Required software
+    audience_flags: [downstream]
+  - row: training-process/design-specifications-of-the-training-process
+    label: Design specifications of the training process
+    audience_flags: [ai_office, nca]
+  - row: training-process/decision-rationale
+    label: Decision rationale
+    audience_flags: [ai_office, nca]
+  - row: data-used-for-training-testing-and-validation/data-type-modality
+    label: Data type/modality
+    audience_flags: [ai_office, nca, downstream]
+  - row: data-used-for-training-testing-and-validation/data-provenance
+    label: Data provenance
+    audience_flags: [ai_office, nca, downstream]
+  - row: data-used-for-training-testing-and-validation/data-provenance-category-options
+    label: For definitions of each listed category, see the Template for the Public Summary of the Training Content of General-Purpose AI models provided by the AI Office
+    audience_flags: []
+  - row: data-used-for-training-testing-and-validation/how-data-was-obtained-and-selected
+    label: How data was obtained and selected
+    audience_flags: [ai_office, nca]
+  - row: data-used-for-training-testing-and-validation/number-of-data-points
+    label: Number of data points
+    audience_flags: [nca]
+  - row: data-used-for-training-testing-and-validation/number-of-data-points-two-significant-figures
+    label: Number of data points
+    audience_flags: [ai_office]
+  - row: data-used-for-training-testing-and-validation/scope-and-main-characteristics
+    label: Scope and main characteristics
+    audience_flags: [ai_office, nca]
+  - row: data-used-for-training-testing-and-validation/data-curation-methodologies
+    label: Data curation methodologies
+    audience_flags: [ai_office, nca, downstream]
+  - row: data-used-for-training-testing-and-validation/measures-to-detect-unsuitability-of-data-sources
+    label: Measures to detect unsuitability of data sources
+    audience_flags: [ai_office, nca]
+  - row: data-used-for-training-testing-and-validation/measures-to-detect-identifiable-biases
+    label: Measures to detect identifiable biases
+    audience_flags: [ai_office, nca]
+  - row: computational-resources/training-time
+    label: Training time
+    audience_flags: [nca]
+  - row: computational-resources/training-time-wall-clock-and-hardware-days
+    label: Training time
+    audience_flags: [ai_office]
+  - row: computational-resources/amount-of-computation-used-for-training
+    label: Amount of computation used for training
+    audience_flags: [nca]
+  - row: computational-resources/amount-of-computation-used-for-training-two-significant-figures
+    label: Amount of computation used for training
+    audience_flags: [ai_office]
+  - row: computational-resources/measurement-methodology
+    label: Measurement methodology
+    audience_flags: [ai_office, nca]
+  - row: energy-consumption/amount-of-energy-used-for-training
+    label: Amount of energy used for training
+    audience_flags: [ai_office, nca]
+  - row: energy-consumption/measurement-methodology-energy
+    label: Measurement methodology
+    audience_flags: [ai_office, nca]
+  - row: energy-consumption/benchmarked-amount-of-computation-used-for-inference
+    label: Benchmarked amount of computation used for inference
+    audience_flags: [ai_office, nca]
+  - row: energy-consumption/measurement-methodology-inference
+    label: Measurement methodology
+    audience_flags: [ai_office, nca]
