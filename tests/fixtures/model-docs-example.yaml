@@ -1,0 +1,57 @@
+# A complete native document (schema 1): every model_field path in
+# the committed registry holds a valid typed value here, the two structured
+# elements as mappings, plus one Art. 52(1) notification record
+# for the compute that triggered the duty. It doubles as the lint
+# demo:
+#
+#   gpai-docs lint tests/fixtures/model-docs-example.yaml   # exit 0
+#
+# The values describe an invented model; they are illustrative, not a real
+# model's documentation.
+schema: 1
+annex_xi:
+  intended_tasks: "Text-to-text generation, summarisation and question answering; integration into chat assistants and document-processing tools."
+  acceptable_use_policies: "No use for surveillance, deception, or automated decisions on individuals without human review; downstream providers must carry the policy forward."
+  release_date_and_distribution: "Released 12 May 2026; distributed through the provider's API and as downloadable weights."
+  architecture_and_parameters: "Decoder-only transformer with 70 billion parameters, 80 layers and grouped-query attention."
+  input_output_modalities: "Text inputs and text outputs; images can be attached as inputs."
+  licence: "Apache License 2.0, with a use policy that travels with the weights."
+  technical_means_for_integration: "An HTTP client, an API key and the provider's inference endpoint; local deployment requires 40 GB of accelerator memory."
+  design_specifications: "Trained to optimise next-token prediction on a curated multilingual corpus; key design choices were grouped-query attention and a 32k-token context window."
+  training_data: "Web text, books and licensed corpora, filtered for quality and deduplicated; 4.2 trillion tokens; curation methods and bias-detection measures are recorded in the data card."
+  computational_resources:
+    training_flop: 2.5e+25
+    estimation_method: "Extrapolated from the provider's published training report; no measured figure was released."
+    training_time: "21 days on 4,096 accelerators."
+  energy_consumption:
+    training:
+      amount: 1500
+      unit: "MWh"
+      method: "Estimated from accelerator power draw and training time; reported in the provider's sustainability note."
+    inference:
+      amount: 8.1e+18
+      unit: "FLOP"
+      method: "Benchmarked over a 30-day production window, as reported in the model card."
+  # Annex XI, Section 2 values. They ride present while the systemic-risk
+  # marker is absent (providing a conditional field early is no finding), so
+  # the complete fixture keeps answering every registry model_field path.
+  evaluation_strategies: "Public benchmarks with an evaluation card recording the criteria, metrics and limitation-identification methodology; no third-party evaluation results were available at release."
+  adversarial_testing: "An internal red-team exercise over jailbreak and misuse prompts, followed by an external review; alignment tuning followed the exercise."
+  system_architecture: "A decoder-only transformer served behind an inference gateway: the tokeniser, weights, retrieval layer and gateway build on each other as the deployment diagram records."
+annex_xii:
+  intended_tasks: "The tasks the model performs and the type and nature of the AI systems into which it can be integrated: chat assistants, search and document processing."
+  acceptable_use_policies: "The provider's acceptable use policy applies to downstream providers and forbids surveillance and deception."
+  release_date_and_distribution: "First release 12 May 2026; distribution channels are the provider's API, cloud marketplaces and direct download."
+  hardware_software_interaction: "Runs on 80 GB datacentre accelerators; recommended driver and inference-stack versions are listed in the deployment guide."
+  software_versions: "Weights version 1.0; reference inference stack version 2026.05."
+  architecture_and_parameters: "Decoder-only transformer with 70 billion parameters and a 32k-token context window."
+  input_output_modalities: "Text and image inputs; text outputs."
+  licence: "Apache License 2.0."
+  technical_means_for_integration: "Instructions of use, an inference endpoint or a local container, and hardware satisfying the deployment guide."
+  modalities_and_maximum_size: "Text inputs up to 32,000 tokens; image inputs up to 20 MB; outputs up to 8,000 tokens."
+  training_data: "As recorded for Annex XI: the type, provenance, scope and main characteristics of the training, testing and validation data."
+notifications:
+  - compute_flop: 2.5e+25
+    estimation_method: "Extrapolated from the provider's published training report; no measured figure was released."
+    aware_on: 2026-04-20
+    notified_on: 2026-04-30
