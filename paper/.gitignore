@@ -1,0 +1,11 @@
+# Local build outputs. The submission source is main.tex; the PDF and the
+# intermediate files are produced by paper/build.sh or CI and never tracked.
+
+*.pdf
+*.aux
+*.log
+*.out
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.toc
