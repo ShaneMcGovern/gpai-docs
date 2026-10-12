@@ -1,0 +1,107 @@
+# The corpus's recorded sources, machine-readable: one entry per fetch the
+# provenance table in corpus/README.md records, so scripts/verify-corpus-sources.py
+# can re-fetch and re-hash them. The sources are fetched at authoring time,
+# hashed, and never committed; the twelve documents built from them are
+# authored, and the redistribution decision about shipping those documents
+# is deliberately not made here.
+#
+# role:
+#   document       one of the twelve documents draws its values from this source
+#   corroborating  backs specific values inside a document (papers, docs pages)
+#   recorded-unused  recorded for the audit trail; no shipped document uses it
+#
+# reverifiable: false where the source varies per request, so a fresh fetch
+#   cannot reproduce the recorded bytes; the script reports these, never fails on them.
+entries:
+  - slug: gpt-oss-120b
+    role: document
+    url: https://huggingface.co/openai/gpt-oss-120b/raw/main/README.md
+    sha256: 92b0408cf5dce04e4c5e4e5f2be0361da710d3650baefd7d7519badd1c687919
+    licence: Apache-2.0
+  - slug: llama-3-3-70b
+    role: document
+    url: https://raw.githubusercontent.com/meta-llama/llama-models/main/models/llama3_3/MODEL_CARD.md
+    sha256: 1bad06e0e2feadf6a195fcce4d6a2f7bca48f05b7a25a71f18c2baa88d292adf
+    licence: Llama 3.3 Community License Agreement (custom commercial licence)
+  - slug: olmo-2-13b
+    role: document
+    url: https://huggingface.co/allenai/OLMo-2-1124-13B/raw/main/README.md
+    sha256: 89a3954d0ca1a8061cd1b228fcfe3336385109c58b63a616a2a873e86bac7e4d
+    licence: Apache-2.0
+  - slug: mistral-small-24b
+    role: document
+    url: https://huggingface.co/mistralai/Mistral-Small-24B-Instruct-2501/raw/main/README.md
+    sha256: c3889bddcf96969899f867f657f1929f0f66ee9e91cf15870a7b0452a6b5a6ca
+    licence: Apache-2.0
+  - slug: phi-4
+    role: document
+    url: https://huggingface.co/microsoft/phi-4/raw/main/README.md
+    sha256: 4cc56faa6a5bcbde6227789b2ef9aedfde481ca660c8a4b686703aae19b00011
+    licence: MIT
+  - slug: qwen2-5-72b
+    role: document
+    url: https://huggingface.co/Qwen/Qwen2.5-72B-Instruct/raw/main/README.md
+    sha256: 62d6f2176c0925b7c7e5ec6c5ee06cad83868bb21a8e25d58283e3d7707d3f79
+    licence: Qwen licence (custom; the card's license:other with license_name:qwen)
+  - slug: deepseek-v3
+    role: document
+    url: https://huggingface.co/deepseek-ai/DeepSeek-V3/raw/main/README.md
+    sha256: 3739763a851074c810f1565f9823956f3a095231f8c591dd3c254581bdd3cf08
+    licence: DeepSeek Model License (Model Agreement) for the weights; MIT for the code repository
+  - slug: llama-3-1-405b
+    role: document
+    url: https://raw.githubusercontent.com/meta-llama/llama-models/main/models/llama3_1/MODEL_CARD.md
+    sha256: a37da4be5eb00d97ee0017cadf54c55e8aca84c715fa7d0981d3f2bc13b763ef
+    licence: Llama 3.1 Community License (custom commercial licence)
+  - slug: bloom
+    role: document
+    url: https://huggingface.co/bigscience/bloom/raw/main/README.md
+    sha256: dfcc25552c185cdba2436f530678b29e39ae542157484d792145126b43d10770
+    licence: BigScience BLOOM RAIL 1.0 (the card's license:bigscience-bloom-rail-1.0)
+  - slug: deepseek-v2
+    role: document
+    url: https://huggingface.co/deepseek-ai/DeepSeek-V2/raw/main/README.md
+    sha256: 8bf7588b4dfe338bfc9fbe544c88a90b9ba659804e739cdfea3418becfbce636
+    licence: DeepSeek Model License (Model Agreement) for the weights; MIT for the code repository
+  - slug: gpt-4o
+    role: document
+    url: https://cdn.openai.com/gpt-4o-system-card.pdf
+    sha256: e2579ecb185cbc13bac39f9dbf25e1917f78e1ea5a3a5023165c6614fb5db724
+    licence: unclear (representation basis)
+  - slug: falcon-180b
+    role: document
+    url: https://huggingface.co/tiiuae/falcon-180B
+    sha256: b1913e0fe6ceac7d9f15626b4c2bc7b5fdd16c05595bdd5ec2595d44fc170f60
+    licence: unknown as tagged (the page's license:unknown; the card text names the Falcon-180B TII License and Acceptable Use Policy)
+    reverifiable: false
+    note: the page varies per request (request ids, sanitizer tokens), so a fresh fetch hashes differently; recorded as read at authoring time
+  - slug: bloom-paper
+    role: corroborating
+    url: https://arxiv.org/html/2211.05100
+    sha256: 8d5748a186c178dafed5314b913b08a590e897b8ad9b8b9817d715bc60c10625
+    licence: CC BY 4.0 per its arXiv page
+    note: corroborates the bloom document's parameter count and training figures
+  - slug: deepseek-coder-v2-paper
+    role: corroborating
+    url: https://arxiv.org/html/2406.11931
+    sha256: 6e7918134fb4f3a172c84f909e4470065a80700e4c556b401280d48e3c18238c
+    licence: CC BY 4.0 per its arXiv page
+    note: source of the further pretraining the deepseek-v2 modification record carries
+  - slug: gpt-4o-model-docs
+    role: corroborating
+    url: https://platform.openai.com/docs/models/gpt-4o
+    sha256: 09f3a2170bacf5d847d62b6b3aac333fcbcafb5d701358323b73ae6b6bc09226
+    licence: unclear (representation basis)
+    note: the fetch follows the provider's redirect to developers.openai.com; the hash is of the body returned
+  - slug: nvidia-nemotron-70b-card
+    role: recorded-unused
+    url: https://huggingface.co/nvidia/Llama-3.1-Nemotron-70B-Instruct/raw/main/README.md
+    sha256: 1f43630164f9377020ab15cff926960aeaaaf8a6435e65b232d0b5a4ca1c6854
+    licence: see the card
+    note: the NVIDIA row was substituted by deepseek-v2, recorded rather than silently dropped
+  - slug: helpsteer2-preference-paper
+    role: recorded-unused
+    url: https://arxiv.org/html/2410.01257
+    sha256: 91ced148a9ed88c0c06e496e6144459df50814ebf84ddc292eca46ece5783fd1
+    licence: CC BY 4.0 per its arXiv page
+    note: publishes the substituted row's method but no compute amount, which is why the substitution was made
