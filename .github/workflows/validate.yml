@@ -1,0 +1,185 @@
+---
+name: Validate
+
+on:
+  # PR-only: a green run is the quality gate a PR must clear before merge. The
+  # coverage badge job lives in release.yml, so nothing here writes to main.
+  # Whether this workflow blocks a merge is a repository setting rather than a
+  # property of the file; release.yml refuses to release a commit whose PR has
+  # no green run, so the gate holds either way.
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  pre-commit:
+    name: Pre-commit (all hooks)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7.0.1
+        with:
+          # The commit-msg checks below walk the pull request's commits, so the
+          # base commit and the branch history must be present.
+          fetch-depth: 0
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v10.2.0
+        with:
+          enable-cache: true
+          cache-dependency-glob: "uv.lock"
+
+      - name: Cache pre-commit hook environments
+        uses: actions/cache@v6.1.0
+        with:
+          path: ~/.cache/pre-commit
+          key: pre-commit-${{ hashFiles('.pre-commit-config.yaml') }}
+          # Without this, editing any hook revision is a cold miss and every
+          # environment rebuilds. The stale cache is still mostly valid.
+          restore-keys: |
+            pre-commit-
+
+      # The local ruff and mypy hooks shell out to `uv run`, so the project
+      # environment has to exist first.
+      - name: Install dependencies
+        run: uv sync --frozen --all-groups
+
+      - name: Run all pre-commit hooks
+        run: uv run pre-commit run --all-files --show-diff-on-failure
+
+      # `--all-files` runs the default stage only. The commit-msg hooks need
+      # one message at a time, and pre-commit ignores --from-ref/--to-ref for
+      # that stage, so each commit's message is checked on its own.
+      - name: Run the commit-msg hooks over the pull request commits
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          status=0
+          while read -r sha; do
+            git log -1 --format='%B' "$sha" > /tmp/commit-msg.txt
+            if ! uv run pre-commit run --hook-stage commit-msg \
+              --commit-msg-filename /tmp/commit-msg.txt; then
+              echo "::error::the commit-msg hooks failed for commit $sha"
+              status=1
+            fi
+          done < <(git rev-list --no-merges "$BASE_SHA..$HEAD_SHA")
+          exit "$status"
+
+      # A squash merge turns the pull request title into the subject on main,
+      # and a non-conventional subject silently produces no release.
+      - name: Check the pull request title
+        env:
+          PR_TITLE: ${{ github.event.pull_request.title }}
+        run: |
+          printf '%s\n' "$PR_TITLE" > /tmp/pr-title.txt
+          uv run pre-commit run conventional-pre-commit \
+            --hook-stage commit-msg --commit-msg-filename /tmp/pr-title.txt
+
+  test:
+    name: Run tests
+    needs: pre-commit
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7.0.1
+
+      # python-version is left unset because uv reads .python-version, so the
+      # interpreter pin lives in exactly one place.
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v10.2.0
+        with:
+          enable-cache: true
+          cache-dependency-glob: "uv.lock"
+
+      - name: Install dependencies
+        run: uv sync --frozen --all-groups
+
+      - name: Run tests
+        run: uv run pytest -v
+
+  docker:
+    name: Docker image (build and smoke)
+    needs: pre-commit
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7.0.1
+
+      # Build only: no login, no push, no registry credentials anywhere in this
+      # job. The image is the artifact; publication is a separate decision.
+      - name: Build the image
+        run: docker build --tag gpai-docs:ci .
+
+      # --help proves the console script resolved and the CLI imported: the
+      # entrypoint the image ships is the one the wheel installed.
+      - name: Check the console script
+        run: docker run --rm gpai-docs:ci --help
+
+      # A document with only the schema marker is valid input that lints to
+      # findings by definition, so exit 1 and the shared closing line are
+      # asserted, not tolerated: this is the smoke test of the run side.
+      - name: Lint a minimal document
+        run: |
+          mkdir -p "$RUNNER_TEMP/smoke"
+          printf 'schema: 1\n' > "$RUNNER_TEMP/smoke/model-docs.yaml"
+          set +e
+          docker run --rm -v "$RUNNER_TEMP/smoke:/work" gpai-docs:ci \
+            lint /work/model-docs.yaml > "$RUNNER_TEMP/smoke/lint.out"
+          status=$?
+          set -e
+          if [ "$status" -ne 1 ]; then
+            cat "$RUNNER_TEMP/smoke/lint.out"
+            echo "::error::lint exited $status; expected 1 (findings)"
+            exit 1
+          fi
+          if ! grep -q "engineering evidence, not a compliance verdict" \
+            "$RUNNER_TEMP/smoke/lint.out"; then
+            cat "$RUNNER_TEMP/smoke/lint.out"
+            echo "::error::the findings closer is missing from the lint run"
+            exit 1
+          fi
+          tail -n 1 "$RUNNER_TEMP/smoke/lint.out"
+
+      # Offline: the registry data must verify from the wheel inside the image,
+      # with no network and nothing mounted.
+      - name: Verify the packaged registry (offline)
+        run: docker run --rm gpai-docs:ci registry verify
+
+  paper:
+    name: Paper (LaTeX build)
+    needs: pre-commit
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7.0.1
+
+      # TeX Live 2025 is arXiv's default; compiling with the same year is how
+      # a package that arXiv lacks fails here rather than after submission.
+      # The action ships full TeX Live, so no system install is needed.
+      - name: Compile the paper
+        uses: xu-cheng/latex-action@4.1.0
+        with:
+          root_file: main.tex
+          working_directory: paper
+          texlive_version: 2025
+
+      # pdflatex exits 0 on an overfull box; the log check is what fails a
+      # layout that runs into the margin.
+      - name: Check the TeX log
+        run: bash scripts/check-paper-log.sh paper/main.log
+
+      # The PDF is the reviewer's copy: the artifact is attached to nothing,
+      # and this job never runs release tooling.
+      - name: Upload the compiled PDF
+        uses: actions/upload-artifact@v7.0.2
+        with:
+          name: paper-pdf
+          path: paper/main.pdf

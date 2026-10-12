@@ -1,0 +1,4 @@
+# `eol=lf` pins the working tree as well as the repository. `text=auto` alone
+# still checks out CRLF on Windows, and a CRLF entrypoint.sh fails in the
+# bind-mounted Linux container with "bad interpreter".
+* text=auto eol=lf

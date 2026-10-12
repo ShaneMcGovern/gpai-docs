@@ -1,0 +1,37 @@
+{
+  // Thin editor wrapper over compose.yaml; entrypoint.sh does the real setup.
+  "name": "gpai-docs",
+
+  "dockerComposeFile": "compose.yaml",
+  "service": "app",
+  "workspaceFolder": "/app",
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "charliermarsh.ruff",
+        "ms-python.mypy-type-checker",
+        "ms-python.python"
+      ],
+      "settings": {
+        "python.defaultInterpreterPath": "/app/.venv/bin/python",
+        // Without this, the extension's bundled mypy cannot see .venv and
+        // disagrees with `uv run mypy` and CI.
+        "mypy-type-checker.importStrategy": "fromEnvironment",
+        "python.testing.pytestEnabled": true,
+        // Coverage tracing silently disables breakpoints in editor runs only;
+        // CI and `uv run pytest` still measure coverage.
+        "python.testing.pytestArgs": ["--no-cov"],
+        "editor.formatOnSave": true,
+        "[python]": {
+          "editor.defaultFormatter": "charliermarsh.ruff",
+          "editor.codeActionsOnSave": {
+            "source.organizeImports.ruff": "explicit"
+          }
+        }
+      }
+    }
+  },
+
+  "remoteUser": "developer"
+}
